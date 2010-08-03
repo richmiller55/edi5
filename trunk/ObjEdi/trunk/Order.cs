@@ -8,7 +8,7 @@ namespace ObjEdi
     public class Order
     {
         private string m_poNumber;
-        private string m_aicOrderNo;
+        // private string m_aicOrderNo;
         private string m_customerId;
         private string m_shipToId;
         private string m_shipVia;
@@ -19,7 +19,7 @@ namespace ObjEdi
         private System.DateTime m_requestDate;
         private System.DateTime m_needByDate;
         public ArrayList lines;
-        OrderLine currentLine;
+        private OrderLine m_currentLine;
 
         public Order()
         {
@@ -27,31 +27,44 @@ namespace ObjEdi
             this.m_shipToId = "";
             this.m_validLines = 0;
             this.lines = new ArrayList();
-            currentLine = new OrderLine();
+            this.CurrentLine = new OrderLine();
         }
         public void postLine()
         {
             string canceledItem1 = "23473952";
             string canceledItem2 = "23474174";
-            if (currentLine.CustomerPart == canceledItem1)
+            if (this.CurrentLine.CustomerPart == canceledItem1)
             {
-                currentLine = new OrderLine();
+                this.CurrentLine = new OrderLine();
             }
-            else if (currentLine.CustomerPart == canceledItem2)
+            else if (this.CurrentLine.CustomerPart == canceledItem2)
             {
-                currentLine = new OrderLine();
+                this.CurrentLine = new OrderLine();
             }
             else
             {
-                lines.Add(currentLine);
+                lines.Add(this.CurrentLine);
+                this.CurrentLine = new OrderLine();
                 this.ValidLines += 1;
             }
         }
         public void postLineNormal()
         {
-            lines.Add(currentLine);
-            currentLine = new OrderLine();
+            lines.Add(this.CurrentLine);
+            this.CurrentLine = new OrderLine();
         }
+        public OrderLine CurrentLine
+        {
+            get
+            {
+                return m_currentLine;
+            }
+            set
+            {
+                m_currentLine = value;
+            }
+        }
+
         public string PONumber
         {
             get
@@ -78,11 +91,11 @@ namespace ObjEdi
         {
             get
             {
-                return currentLine.CustomerPart;
+                return this.CurrentLine.CustomerPart;
             }
             set
             {
-                currentLine.CustomerPart = value;
+                this.CurrentLine.CustomerPart = value;
             }
         }
         public int ValidLines
@@ -223,77 +236,77 @@ namespace ObjEdi
         {
             get
             {
-                return currentLine.LineNo.ToString();
+                return this.CurrentLine.LineNo.ToString();
             }
             set
             {
-                currentLine.LineNo = Convert.ToInt32(value);
+                this.CurrentLine.LineNo = Convert.ToInt32(value);
             }
         }
         public string UPC
         {
             get
             {
-                return currentLine.UPC;
+                return this.CurrentLine.UPC;
             }
             set
             {
-                currentLine.UPC = value;
+                this.CurrentLine.UPC = value;
             }
         }
         public int Rev
         {
             get
             {
-                return currentLine.Rev;
+                return this.CurrentLine.Rev;
             }
             set
             {
-                currentLine.Rev = value;
+                this.CurrentLine.Rev = value;
             }
         }
         public decimal OrderQty
         {
             get
             {
-                return currentLine.Qty;
+                return this.CurrentLine.Qty;
             }
             set
             {
-                currentLine.Qty = value;
+                this.CurrentLine.Qty = value;
             }
         }
         public decimal UnitPrice
         {
             get
             {
-                return currentLine.UnitPrice;
+                return this.CurrentLine.UnitPrice;
             }
             set
             {
-                currentLine.UnitPrice = value;
+                this.CurrentLine.UnitPrice = value;
             }
         }
         public int Factor
         {
             get
             {
-                return currentLine.Factor;
+                return this.CurrentLine.Factor;
             }
             set
             {
-                currentLine.Factor = value;
+                this.CurrentLine.Factor = value;
             }
         }
         public string LineRef
         {
             get
             {
-                return currentLine.LineRef;
+                return this.CurrentLine.LineRef;
             }
             set
             {
-                currentLine.LineRef = value;
+                this.CurrentLine.LineRef = value;
             }
         }
         public System.DateTime convertStrToDate(string dateStr)
