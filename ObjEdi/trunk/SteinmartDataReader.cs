@@ -107,44 +107,44 @@ namespace ObjEdi
             while ((line = tr.ReadLine()) != null)
             {
                 string[] split = line.Split(new Char[] { '\t' });
-                string customerId = custId;
+                string customerId = this.custId;
                 string storeNoPre = split[(int)dicFmt.MarkForLocation];
                 int storeInt = Convert.ToInt32(storeNoPre);
                 string storeNo = storeInt.ToString();   
                 
-                // int result = storeNo.CompareTo("391");
-                // if (result == 0) continue;
                 if (lastStoreNo != storeNo && notFirstTime) 
                 {
                     writer.ProcessOrder(ord);
                     ord = new Order();
                     notFirstTime = true;
                 }
-                ord.setCustomerId(customerId);
-                ord.setShipTo(storeNo);
-                ord.setRequestDate(split[(int)dicFmt.ShipDate]);
-                ord.setNeedByDate(split[(int)dicFmt.CancelAfter]);
-                ord.setOrderDate(split[(int)dicFmt.PODate]);
-                string poNo = split[(int)dicFmt.PONumber];
-                ord.setPoNum(poNo);
-                string shipVia = getShipVia(storeNo);
-                ord.setShipVia(shipVia);
-                ord.setTerms(crTerms);
-                string upc = "";
+                ord.CustomerID = customerId;
+                ord.ShipTo = storeNo;
+                ord.RequestDateStr = split[(int)dicFmt.ShipDate];
+                ord.NeedByDateStr  = split[(int)dicFmt.CancelAfter];
+                ord.OrderDateStr   = split[(int)dicFmt.PODate];
+                ord.PONumber = split[(int)dicFmt.PONumber];
+                ord.ShipVia = this.getShipVia(storeNo);
+                ord.TermsCode = crTerms;
+                bool processLine = true;
                 string smPart = split[(int)dicFmt.SKUNumber];
+                ord.CustomerPart = smPart;
                 try
                 {
-                    upc = partXref[smPart].ToString();
+                    ord.UPC = partXref[smPart].ToString();
                 }
                 catch
                 {
                     MessageBox.Show("This Steinmart UPC does not match "  + smPart);
+                    processLine = false;
                 }
-                ord.setUpc(upc); 
-                ord.setRev("0");  // 0
-                ord.setOrderQty(split[(int)dicFmt.Qty]);
-                ord.setUnitPrice(split[(int)dicFmt.UnitPrice]);
-                ord.postLine();
+                ord.Rev = 0;
+                ord.OrderQty = Convert.ToDecimal(split[(int)dicFmt.Qty]);
+                ord.UnitPrice = Convert.ToDecimal(split[(int)dicFmt.UnitPrice]);
+                if (processLine)
+                {
+                    ord.postLine();
+                }
                 lastStoreNo = storeNo;
                 notFirstTime = true;
             }

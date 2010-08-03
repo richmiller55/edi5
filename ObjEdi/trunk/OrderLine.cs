@@ -6,55 +6,124 @@ namespace ObjEdi
 {
     public class OrderLine
     {
-        int lineNumber;
-        string customerPart;
-        string ourPart;
-        string upc;
-        int rev;
-        decimal orderQty;
-        decimal unitPrice;
-        decimal factor;
-        string lineRef;
+        private int     m_lineNumber;
+        private string  m_customerPart;
+        private string  m_ourPart;
+        private string  m_upc;
+        private int     m_rev;
+        private decimal m_orderQty;
+        private decimal m_unitPrice;
+        private int m_factor;
+        private string  m_lineRef;
 
         public OrderLine()
         {
-            //
-            // TODO: Add constructor logic here
-            factor = 1;
-            //
+            this.m_factor = 1;
+            this.UPC = "";
+            this.OurPart = "";
+            this.Qty = 0.0M;
+            this.UnitPrice = 0.0M;
         }
-        public void setCustomerPart(string part) { customerPart = part; }
-        public void setOurPart(string part) { ourPart = part; }
-        public void setUpc(string part) { upc = part; }
-        public void setLineRef(string oldStyle) { lineRef = oldStyle; }
-        
-        public void setLineNo(string lineNo)
+        public string CustomerPart
         {
-            lineNumber = Convert.ToInt32(lineNo);
+            get
+            {
+                return m_customerPart;
+            }
+            set
+            {
+                m_customerPart = value;
+            }
         }
-        public void setRev(string revNo)
+        public string OurPart
         {
-            rev = Convert.ToInt32(revNo);
+            get
+            {
+                return m_ourPart;
+            }
+            set
+            {
+                m_ourPart = value;
+            }
         }
+        public string UPC
+        {
+            get
+            {
+                return m_upc;
+            }
+            set
+            {
+                m_upc = value;
+            }
+        }
+        public int LineNo
+        {
+            get
+            {
+                return m_lineNumber;
+            }
+            set
+            {
+                m_lineNumber = value;
+            }
+        }
+        public int Rev
+        {
+            get
+            {
+                return m_rev;
+            }
+            set
+            {
+                m_rev = value;
+            }
+        }
+        public int Factor
+        {
+            get
+            {
+                return m_factor;
+            }
+            set
+            {
+                m_factor = value;
+            }
+        }
+        public decimal Qty
+        {
+            get
+            {
+                return m_orderQty;
+            }
+            set
+            {
+                m_orderQty = value;
+            }
+        }
+        public decimal UnitPrice
+        {
+            get
+            {
+                return m_unitPrice;
+            }
+            set
+            {
+                m_unitPrice = value;
+            }
+        }
+        public string LineRef
+        {
+            get
+            {
+                return m_lineRef;
+            }
+            set
+            {
+                m_lineRef = value;
+            }
+        }
+        // Convert.ToDecimal(qty);
 
-        public void setFactor(string factorIn)
-        {
-            factor = Convert.ToDecimal(factorIn); 
-        }
-        public void setQty(string qty)
-        {
-            orderQty = Convert.ToDecimal(qty);
-        }
-        public void setUnitPrice(string price)
-        {
-            unitPrice = Convert.ToDecimal(price);
-        }
-        public int getLineNo() { return lineNumber; }
-        public string getUpc() { return upc; }
-        public int getRev() { return rev; }
-        public decimal getQty() { return orderQty; }
-        public decimal getUnitPrice() { return unitPrice; }
-        public string getLineRef() { return lineRef; }
-        public decimal getFactor() { return factor; }
     }
 }
