@@ -29,7 +29,7 @@ namespace ObjEdi
             this.lines = new ArrayList();
             this.CurrentLine = new OrderLine();
         }
-        public void postLine()
+        public void postLineAfter860()
         {
             string canceledItem1 = "23473952";
             string canceledItem2 = "23474174";
@@ -48,10 +48,11 @@ namespace ObjEdi
                 this.ValidLines += 1;
             }
         }
-        public void postLineNormal()
+        public void postLine()
         {
             lines.Add(this.CurrentLine);
             this.CurrentLine = new OrderLine();
+            this.ValidLines += 1;
         }
         public OrderLine CurrentLine
         {
@@ -131,19 +132,6 @@ namespace ObjEdi
                 m_glnLocation = value;
             }
         }
-        /*
-        public string AICorder
-        {
-            get
-            {
-                return m_aicOrderNo;
-            }
-            set
-            {
-                m_aicOrderNo = value;
-            }
-        }
-         * */
         public string ShipVia
         {
             get
