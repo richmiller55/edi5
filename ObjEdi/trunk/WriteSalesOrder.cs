@@ -21,7 +21,7 @@ namespace ObjEdi
         public WriteSalesOrder()
         {
             objSess = new Epicor.Mfg.Core.Session("rich", "homefed55",
-                "AppServerDC://VantageDB1:8321", Epicor.Mfg.Core.Session.LicenseType.Default);
+                "AppServerDC://VantageDB1:8301", Epicor.Mfg.Core.Session.LicenseType.Default);
         }
         public string getPartDescr(string partNumber)
         {
