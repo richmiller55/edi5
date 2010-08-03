@@ -7,94 +7,294 @@ namespace ObjEdi
 {
     public class Order
     {
-        string aicOrderNo;
-        string poNumber;
-        string customerId;
-        string shipToId;
-        string shipVia;
-        string termsCode;
-        
-        System.DateTime orderDate;
-        System.DateTime requestDate;
-        System.DateTime needByDate;
+        private string m_poNumber;
+        private string m_aicOrderNo;
+        private string m_customerId;
+        private string m_shipToId;
+        private string m_shipVia;
+        private string m_termsCode;
+        private string m_glnLocation;
+        private int m_validLines;        
+        private System.DateTime m_orderDate;
+        private System.DateTime m_requestDate;
+        private System.DateTime m_needByDate;
         public ArrayList lines;
         OrderLine currentLine;
 
         public Order()
         {
             //
-            shipToId = "";
-            lines = new ArrayList();
+            this.m_shipToId = "";
+            this.m_validLines = 0;
+            this.lines = new ArrayList();
             currentLine = new OrderLine();
         }
         public void postLine()
         {
-            if 
+            string canceledItem1 = "23473952";
+            string canceledItem2 = "23474174";
+            if (currentLine.CustomerPart == canceledItem1)
+            {
+                currentLine = new OrderLine();
+            }
+            else if (currentLine.CustomerPart == canceledItem2)
+            {
+                currentLine = new OrderLine();
+            }
+            else
+            {
+                lines.Add(currentLine);
+                this.ValidLines += 1;
+            }
+        }
+        public void postLineNormal()
+        {
             lines.Add(currentLine);
             currentLine = new OrderLine();
         }
-        // set functions
-        public void setPoNum(string poNo) { poNumber = poNo; }
-        public void setCustomerId(string custId) { customerId = custId; }
-        public void setShipTo(string shipTo) { shipToId = shipTo; }
-        public void setLocation(string gln) { shipToId = gln; }
-        public void setAicOrderNo(string aicOrd) { aicOrderNo = aicOrd; }
-        public void setShipVia(string via) { shipVia = via; }
-        public void setTerms(string terms) { termsCode = terms; }
-        
-        // get functions
-        public string getSoldTo() { return customerId; }	
-        public string getCustomerId() { return customerId; }	
-        public string getShipTo() { return shipToId; }
-        public string getPoNum() { return poNumber; }
-        public string getShipVia() { return shipVia; }
-        public string getTermsCode() { return termsCode; }
-        public string getAicOrderNo() { return aicOrderNo; }
-        
-        public System.DateTime getOrderDate() { return orderDate; }
-        public System.DateTime getRequestDate() { return requestDate; }
-        public System.DateTime getNeedByDate() { return needByDate; }
-
-        public void setRequestDate(string date)
+        public string PONumber
         {
-            requestDate = convertStrToDate2(date);
+            get
+            {
+                return m_poNumber;
+            }
+            set
+            {
+                m_poNumber = value;
+            }
         }
-        public void setOrderDate(string date)
+        public string CustomerID
         {
-            orderDate = convertStrToDate2(date);
+            get
+            {
+                return m_customerId;
+            }
+            set
+            {
+                m_customerId = value;
+            }
         }
-        public void setNeedByDate(string date)
+        public string CustomerPart
         {
-            needByDate = convertStrToDate2(date);
+            get
+            {
+                return currentLine.CustomerPart;
+            }
+            set
+            {
+                currentLine.CustomerPart = value;
+            }
         }
-
-        public void setOrderLineNo(string lineno)
+        public int ValidLines
         {
-            currentLine.setLineNo(lineno);
+            get
+            {
+                return m_validLines;
+            }
+            set
+            {
+                m_validLines = value;
+            }
         }
-        public void setUpc(string part)
+        public string ShipTo
         {
-            currentLine.setUpc(part);
+            get
+            {
+                return m_shipToId;
+            }
+            set
+            {
+                m_shipToId = value;
+            }
         }
-        public void setRev(string rev)
+        public string GLN
         {
-            currentLine.setRev(rev);
+            get
+            {
+                return m_glnLocation;
+            }
+            set
+            {
+                m_glnLocation = value;
+            }
         }
-        public void setOrderQty(string qty)
+        /*
+        public string AICorder
         {
-            currentLine.setQty(qty);
+            get
+            {
+                return m_aicOrderNo;
+            }
+            set
+            {
+                m_aicOrderNo = value;
+            }
         }
-        public void setUnitPrice(string price)
+         * */
+        public string ShipVia
         {
-            currentLine.setUnitPrice(price);
+            get
+            {
+                return m_shipVia;
+            }
+            set
+            {
+                m_shipVia = value;
+            }
         }
-        public void setFactor(string factor)
+        public string TermsCode
         {
-            currentLine.setFactor(factor);
+            get
+            {
+                return m_termsCode;
+            }
+            set
+            {
+                m_termsCode = value;
+            }
         }
-        public void setLineRef(string lineRef)
+        public System.DateTime OrderDate
         {
-            currentLine.setLineRef(lineRef);
+            get
+            {
+                return m_orderDate;
+            }
+            set
+            {
+                m_orderDate = value;
+            }
+        }
+        public System.DateTime RequestDate
+        {
+            get
+            {
+                return m_requestDate;
+            }
+            set
+            {
+                m_requestDate = value;
+            }
+        }
+        public System.DateTime NeedByDate
+        {
+            get
+            {
+                return m_needByDate;
+            }
+            set
+            {
+                m_needByDate = value;
+            }
+        }
+        public string OrderDateStr
+        {
+            get
+            {
+                return m_orderDate.ToString();
+            }
+            set
+            {
+                m_orderDate = this.convertStrToDate2(value);
+            }
+        }
+        public string RequestDateStr
+        {
+            get
+            {
+                return m_requestDate.ToString();
+            }
+            set
+            {
+                m_requestDate = this.convertStrToDate2(value);
+            }
+        }
+        public string NeedByDateStr
+        {
+            get
+            {
+                return m_needByDate.ToString();
+            }
+            set
+            {
+                m_needByDate = this.convertStrToDate2(value);
+            }
+        }
+        public string OrderLineNo
+        {
+            get
+            {
+                return currentLine.LineNo.ToString();
+            }
+            set
+            {
+                currentLine.LineNo = Convert.ToInt32(value);
+            }
+        }
+        public string UPC
+        {
+            get
+            {
+                return currentLine.UPC;
+            }
+            set
+            {
+                currentLine.UPC = value;
+            }
+        }
+        public int Rev
+        {
+            get
+            {
+                return currentLine.Rev;
+            }
+            set
+            {
+                currentLine.Rev = value;
+            }
+        }
+        public decimal OrderQty
+        {
+            get
+            {
+                return currentLine.Qty;
+            }
+            set
+            {
+                currentLine.Qty = value;
+            }
+        }
+        public decimal UnitPrice
+        {
+            get
+            {
+                return currentLine.UnitPrice;
+            }
+            set
+            {
+                currentLine.UnitPrice = value;
+            }
+        }
+        public int Factor
+        {
+            get
+            {
+                return currentLine.Factor;
+            }
+            set
+            {
+                currentLine.Factor = value;
+            }
+        }
+        public string LineRef
+        {
+            get
+            {
+                return currentLine.LineRef;
+            }
+            set
+            {
+                currentLine.LineRef = value;
+            }
         }
         public System.DateTime convertStrToDate(string dateStr)
         {

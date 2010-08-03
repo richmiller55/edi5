@@ -55,8 +55,9 @@ namespace ObjEdi
                     ord = new Order();
                     notFirstTime = true;
                 }
-                ord.setCustomerId(customerId);
-                ord.setShipTo(split[(int)pvcol.shipTo]);
+                ord.CustomerID = customerId;
+                ord.ShipTo = split[(int)pvcol.shipTo];
+                
                 ord.setRequestDate(split[(int)pvcol.startDate]);
                 ord.setNeedByDate(split[(int)pvcol.startDate]);
                 ord.setOrderDate(split[(int)pvcol.tranDate]);
