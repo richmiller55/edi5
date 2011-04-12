@@ -5,8 +5,8 @@ class PartXRef():
     caUpcToPackSize = {'xxx': 0}
     def __init__(self):
         self.init()
-        self.caUpcToWmPart = {}
-        self.caUpcToPackSize = {}
+        # self.caUpcToWmPart = {}
+        # self.caUpcToPackSize = {}
     def init(self):        
         file = 'wmXref.txt'
         dir = '/home/co-inet/data/edi/walmart/xref/'
