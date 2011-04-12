@@ -15,7 +15,7 @@ class POfile():
 
     def readInvoiceList(self):
         invoiceData = 'results.txt'
-        dir = '~/tmp/'
+        dir = '/home/co-inet/tmp/'
         invFile = dir + invoiceData
         inv = open(invFile, 'r')
         po = PO.PO()
