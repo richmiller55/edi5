@@ -34,7 +34,7 @@ class PO():
     
     def setShipToNum(self,shipToNum):
         self.poHash['shipToNum'] = shipToNum
-        self.poHash['gln'] = self.DCGln.glnLookup(shipToNum)
+        self.poHash['gln'] = self.DCGln.StoreToGLN(shipToNum)
    
     def setInvoiceNum(self,invoiceNum):
         self.poHash['invoiceNum'] = invoiceNum
@@ -50,7 +50,6 @@ class PO():
    
     def setPart(self,partNum):
         self.currentLine['caUpc'] = partNum
-        self.currentLine['wmUpc'] = self.partXref.getWmUpc(partNum)
         self.currentLine['wmPart'] = self.partXref.getWmPart(partNum)
         self.currentLine['packSize'] = self.partXref.getPackSize(partNum)
 

@@ -31,7 +31,7 @@ class InvoiceWriter():
 
     def writeFile(self):
         fileOut = 'wmbatch3.out'
-        dir = '~/data/wmInvoice/'
+        dir = '/home/co-inet/data/edi/walmart/outbox/'
         invOut = dir + fileOut
         self.out = open(invOut, 'w')
         self.wISA()
@@ -119,10 +119,10 @@ class InvoiceWriter():
         self.totalInv = self.totalInv + lineTotal
         self.totalUnits = self.totalUnits + qty
         self.linesInInv = self.linesInInv + 1
-        wmUpc = self.currentPOLine['wmUpc']
+        caUpc = self.currentPOLine['caUpc']
         wmItem = self.currentPOLine['wmPart']
         strQty = '%(#)03d' % {"#":qty}
-        fIt1  = it1Tp.substitute(qtyInvoiced=qty,unitPrice=price,upc=wmUpc,buyerItem=wmItem)   
+        fIt1  = it1Tp.substitute(qtyInvoiced=qty,unitPrice=price,upc=caUpc,buyerItem=wmItem)   
         # IT1**$qtyInvoiced*CA*$unitPrice**UP*$upc*IN*$buyerItem~',
         print >>self.out,  fIt1
         self.IncrementSeg()
