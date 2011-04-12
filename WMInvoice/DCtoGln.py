@@ -4,7 +4,6 @@ class DCtoGln():
     DcHash = {'xxx': 0}
     def __init__(self):
         self.init()
-        
     def init(self):        
         retailLinkFile = 'glnLookup.txt'
         dir = '~/src/python/edi/wm/'
@@ -16,7 +15,6 @@ class DCtoGln():
             dc = columns[1]
             self.DcHash[dc] = gln
         input1.close()   
-            
     def glnLookup(self,dc):
         try:
             dcUp = dc.upper()

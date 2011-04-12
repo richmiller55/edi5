@@ -13,7 +13,7 @@ class PartXRef():
         
     def init(self):        
         file = 'wmXRef.txt'
-        dir = './'
+        dir = '/home/co-inet/data/edi/walmart/xref/'
         fullPath = dir + file
         xRef = open(fullPath, 'r')
 
