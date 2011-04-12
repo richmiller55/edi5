@@ -12,8 +12,8 @@ class PartXRef():
         self.init()
         
     def init(self):        
-        file = 'WMpartXRef.txt'
-        dir = 'E:\data\projects\edi\InvFromXML/'
+        file = 'wmXRef.txt'
+        dir = './'
         fullPath = dir + file
         xRef = open(fullPath, 'r')
 
@@ -21,8 +21,6 @@ class PartXRef():
             columns = line.split('\t')
             i = 0
             caUPC = columns[i]
-            i = i + 1
-            wmUPC = columns[i]
             i = i + 1
             wmPart = columns[i]
             i = i + 1

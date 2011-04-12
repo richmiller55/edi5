@@ -15,7 +15,7 @@ class POfile():
 
     def readInvoiceList(self):
         invoiceData = 'results.txt'
-        dir = 'E:/data/calAccessories/data/edi/WM/invoiceInput/'
+        dir = '~/tmp/'
         invFile = dir + invoiceData
         inv = open(invFile, 'r')
         po = PO.PO()
