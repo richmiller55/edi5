@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import DCtoGln
+import GlnLookup
 import PartXRef
 
 class PO():
@@ -10,7 +10,7 @@ class PO():
     getDc = {}
     poLinesDict = {}
     def __init__(self):
-        self.DCGln = DCtoGln.DCtoGln()
+        self.DCGln = GlnLookup.GlnToDC()
         self.partXref = PartXRef.PartXRef()
         self.currentLine = {}
         self.poHash = {}
