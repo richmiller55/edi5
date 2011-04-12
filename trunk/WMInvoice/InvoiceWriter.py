@@ -31,7 +31,7 @@ class InvoiceWriter():
 
     def writeFile(self):
         fileOut = 'wmbatch3.out'
-        dir = 'E:/data/calAccessories/data/edi/WM/invoiceInput/'
+        dir = '~/data/wmInvoice/'
         invOut = dir + fileOut
         self.out = open(invOut, 'w')
         self.wISA()
