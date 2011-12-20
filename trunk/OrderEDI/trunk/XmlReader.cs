@@ -45,14 +45,14 @@ namespace OrderEDI
                         switch (currentElement)
                         {
                             case "PONum":
-                                order.setPoNum(reader.Value);
+                                order.PoNo = reader.Value;
                                 break;
                             case "ShipToNum":
-                                order.setShipTo(reader.Value);
+                                order.ShipToId = reader.Value;
                                 order.setShipToLine(reader.Value);
                                 break;
                             case "ShipTo":
-                                order.setShipTo(reader.Value);
+                                order.ShipToId = reader.Value;
                                 order.setShipToLine(reader.Value);
                                 break;
                             case "ShipViaCode":
@@ -62,7 +62,7 @@ namespace OrderEDI
                                 order.setLocation(reader.Value);
                                 break;
                             case "BTCustID":
-                                order.setCustomerId(reader.Value);
+                                order.CustomerID = reader.Value;
                                 break;
                             case "RequestDate":
                                 order.setRequestDate(reader.Value);

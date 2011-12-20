@@ -15,7 +15,7 @@ namespace OrderEDI
         {
             currentLine.setShipTo(shipTo);
         }
-        public new string getPoNum() { return poNumber + ":" + shipToId; }
+        public string getPoNum() { return PoNo + ":" + ShipToId; }
         public new void postLine()
         {
             lines.Add(currentLine);
