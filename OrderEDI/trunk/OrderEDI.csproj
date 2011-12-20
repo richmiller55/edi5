@@ -34,35 +34,35 @@
   <ItemGroup>
     <Reference Include="Epicor.Mfg.BO.Customer, Version=8.3.404.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\client803\client\Epicor.Mfg.BO.Customer.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\client803\client\Epicor.Mfg.BO.Customer.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.Part, Version=8.3.404.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\client803\client\Epicor.Mfg.BO.Part.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\client803\client\Epicor.Mfg.BO.Part.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.BO.SalesOrder, Version=8.3.404.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\client803\client\Epicor.Mfg.BO.SalesOrder.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\client803\client\Epicor.Mfg.BO.SalesOrder.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.Core.BLConnectionPool, Version=8.3.404.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\client803\client\Epicor.Mfg.Core.BLConnectionPool.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\client803\client\Epicor.Mfg.Core.BLConnectionPool.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.Core.Session, Version=8.3.404.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\client803\client\Epicor.Mfg.Core.Session.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\client803\client\Epicor.Mfg.Core.Session.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.ICustomer, Version=8.3.404.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\client803\client\Epicor.Mfg.IF.ICustomer.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\client803\client\Epicor.Mfg.IF.ICustomer.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.IPart, Version=8.3.404.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\client803\client\Epicor.Mfg.IF.IPart.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\client803\client\Epicor.Mfg.IF.IPart.dll</HintPath>
     </Reference>
     <Reference Include="Epicor.Mfg.IF.ISalesOrder, Version=8.3.404.0, Culture=neutral, PublicKeyToken=5d3fa3c7105d7992, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\client803\client\Epicor.Mfg.IF.ISalesOrder.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\client803\client\Epicor.Mfg.IF.ISalesOrder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

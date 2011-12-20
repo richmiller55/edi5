@@ -39,12 +39,12 @@ namespace OrderEDI
         }
         public void ProcessOrder(Order ord)
         {
-
             customerObj = new Epicor.Mfg.BO.Customer(objSess.ConnectionPool);
             string customerId = ord.getSoldTo();
             ds = customerObj.GetCustomer(customerId);
             Epicor.Mfg.BO.CustomerDataSet.CustomerRow row = (Epicor.Mfg.BO.CustomerDataSet.CustomerRow)ds.Customer.Rows[0];
             int custNum = (int)row.CustNum;
+
             Epicor.Mfg.BO.SalesOrder salesOrderObj;
             salesOrderObj = new Epicor.Mfg.BO.SalesOrder(objSess.ConnectionPool);
             Epicor.Mfg.BO.SalesOrderDataSet soDs;
@@ -53,16 +53,22 @@ namespace OrderEDI
             Epicor.Mfg.BO.SalesOrderDataSet.OrderHedRow hedRow = (Epicor.Mfg.BO.SalesOrderDataSet.OrderHedRow)soDs.OrderHed.Rows[0];
             hedRow.CustomerCustID = customerId;
             hedRow.CustNum = custNum;
+            string shipTo = ord.getShipTo();
+            // my expectation here is that ord should return 0
+            // unless it is set. ord is so primitive bring the 
+            // xml code over, of course
+            hedRow.ShipToNum = shipTo;
             hedRow.BTCustNum = custNum;
             hedRow.TermsCode = "N30";
             hedRow.Company = "CA";
             hedRow.ShortChar01 = "EDI";
             hedRow.PONum = ord.getPoNum();
             hedRow.OrderDate = ord.getOrderDate();
-            hedRow.NeedByDate = ord.getRequestDate();
+            hedRow.NeedByDate = ord.NeedByDate;
             hedRow.RequestDate = ord.getRequestDate();
             hedRow.ShipToNum = ord.getShipTo();
             hedRow.ShipViaCode = ord.getShipVia();
+            // hedRow.ShipViaCode = "UGND";
             bool result = true;
             
             string message;
@@ -91,6 +97,7 @@ namespace OrderEDI
                     dtlRow.OrderQty = line.getQty();
                     string partNumber = line.getUpc();
                     dtlRow.PartNum = partNumber;
+                    // dtlRow.RevisionNum = "1";
                     string partDescr = getPartDescr(partNumber);
                     dtlRow.LineDesc = partDescr;
                     dtlRow.RowMod = "A";
@@ -132,13 +139,14 @@ namespace OrderEDI
             hedRow.TermsCode = "N30";
             hedRow.Company = "CA";
             hedRow.ShortChar01 = "EDI";
+
             hedRow.PONum = ord.getPoNum();
             hedRow.OrderDate = ord.getOrderDate();
-            hedRow.NeedByDate = ord.getRequestDate();
+            hedRow.NeedByDate = ord.NeedByDate;
             hedRow.RequestDate = ord.getRequestDate();
             hedRow.ShipToNum = ord.getShipTo();
             hedRow.ShipViaCode = ord.getShipVia();
-            
+   
             bool result = true;
             string message;
             try
