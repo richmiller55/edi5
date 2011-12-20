@@ -19,7 +19,16 @@ namespace OrderEDI
         {
             return order;
         }
+        public System.DateTime convertStrToDate(string dateStr)
+        {
+            string year = dateStr.Substring(0, 4);
+            string month = dateStr.Substring(4, 2);
+            string day = dateStr.Substring(6, 2);
 
+            System.DateTime dateObj = new DateTime(Convert.ToInt32(year),
+                Convert.ToInt32(month), Convert.ToInt32(day));
+            return dateObj;
+        }
         public void runIt()
         {
             XmlTextReader reader = new XmlTextReader(fileName);
@@ -57,6 +66,9 @@ namespace OrderEDI
                                 break;
                             case "RequestDate":
                                 order.setRequestDate(reader.Value);
+                                break;
+                            case "NeedByDate":
+                                order.NeedByDate = convertStrToDate(reader.Value);
                                 break;
                             case "OrderDate":
                                 order.setOrderDate(reader.Value);

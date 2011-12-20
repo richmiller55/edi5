@@ -15,17 +15,24 @@ namespace OrderEDI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            // Application.Run(new Form1());
             runDir();
-            runLCDir();
+            // runSDQ();
+            // runLCDir();
         }
         static void runLCDir()
         {
-            string dir = "D:/users/rich/data/lc/ToLoad/";
+            // string dir = "D:/users/rich/data/lc/ToLoad/";
+            string dir = "I:/edi/inbox/";
             DirectoryInfo mainDir = new DirectoryInfo(dir);
             try
             {
                 FileSystemInfo[] ediOrders = mainDir.GetFileSystemInfos();
+                Array.Sort(ediOrders, delegate(FileSystemInfo file1,
+                                               FileSystemInfo file2)
+                {
+                    return file1.FullName.CompareTo(file2.FullName);
+                });
                 foreach (FileSystemInfo ediOrder in ediOrders)
                 {
                     string fileName = ediOrder.Name;
@@ -41,10 +48,9 @@ namespace OrderEDI
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
         }
-
         static void runDir()
         {
-            string dir = "D:/users/rich/data/wm/ToLoad/";
+            string dir = "I:/edi/inbox/";
             DirectoryInfo mainDir = new DirectoryInfo(dir);
             try
             {
@@ -52,7 +58,7 @@ namespace OrderEDI
                 foreach (FileSystemInfo ediOrder in ediOrders)
                 {
                     string fileName = ediOrder.Name;
-                    XmlReader reader = new XmlReader(dir,fileName);
+                    XmlReader reader = new XmlReader(dir, fileName);
                     reader.runIt();
                     Order ord = reader.getOrder();
                     WriteSalesOrder writer = new WriteSalesOrder();
@@ -64,6 +70,27 @@ namespace OrderEDI
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
         }
-
+        static void runSDQ()
+        {
+            string dir = "I:/edi/inbox/";
+            DirectoryInfo mainDir = new DirectoryInfo(dir);
+            try
+            {
+                FileSystemInfo[] ediOrders = mainDir.GetFileSystemInfos();
+                foreach (FileSystemInfo ediOrder in ediOrders)
+                {
+                    string fileName = ediOrder.Name;
+                    XmlReader reader = new XmlReader(dir, fileName);
+                    reader.runIt();
+                    Order ord = reader.getOrder();
+                    WriteSalesOrder writer = new WriteSalesOrder();
+                    writer.ProcessOrder(ord);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+            }
+        }
     }
 }

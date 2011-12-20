@@ -13,6 +13,7 @@ namespace OrderEDI
         protected string shipToId;
         string shipViaCode;
         System.DateTime orderDate;
+        System.DateTime needByDate;
         System.DateTime requestDate;
         public ArrayList lines;
         protected ShipToOrderLine currentLine;
@@ -42,7 +43,12 @@ namespace OrderEDI
         public string getShipVia() { return shipViaCode; }
         public System.DateTime getOrderDate() { return orderDate; }
         public System.DateTime getRequestDate() { return requestDate; }
-        
+
+        public System.DateTime NeedByDate
+        {
+            get { return needByDate; }
+            set { needByDate = value; }
+        }
         public void setRequestDate(string date)
         {
             requestDate = convertStrToDate(date);
