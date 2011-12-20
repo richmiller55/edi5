@@ -40,7 +40,7 @@ namespace OrderEDI
         public void ProcessOrder(Order ord)
         {
             customerObj = new Epicor.Mfg.BO.Customer(objSess.ConnectionPool);
-            string customerId = ord.getSoldTo();
+            string customerId = ord.CustomerID;
             ds = customerObj.GetCustomer(customerId);
             Epicor.Mfg.BO.CustomerDataSet.CustomerRow row = (Epicor.Mfg.BO.CustomerDataSet.CustomerRow)ds.Customer.Rows[0];
             int custNum = (int)row.CustNum;
@@ -53,7 +53,7 @@ namespace OrderEDI
             Epicor.Mfg.BO.SalesOrderDataSet.OrderHedRow hedRow = (Epicor.Mfg.BO.SalesOrderDataSet.OrderHedRow)soDs.OrderHed.Rows[0];
             hedRow.CustomerCustID = customerId;
             hedRow.CustNum = custNum;
-            string shipTo = ord.getShipTo();
+            string shipTo = ord.ShipToId;
             // my expectation here is that ord should return 0
             // unless it is set. ord is so primitive bring the 
             // xml code over, of course
@@ -62,11 +62,11 @@ namespace OrderEDI
             hedRow.TermsCode = "N30";
             hedRow.Company = "CA";
             hedRow.ShortChar01 = "EDI";
-            hedRow.PONum = ord.getPoNum();
+            hedRow.PONum = ord.PoNo;
             hedRow.OrderDate = ord.getOrderDate();
             hedRow.NeedByDate = ord.NeedByDate;
             hedRow.RequestDate = ord.getRequestDate();
-            hedRow.ShipToNum = ord.getShipTo();
+            hedRow.ShipToNum = ord.ShipToId;
             hedRow.ShipViaCode = ord.getShipVia();
             // hedRow.ShipViaCode = "UGND";
             bool result = true;
@@ -123,7 +123,7 @@ namespace OrderEDI
         public void ProcessOrder(ShipToOrder ord)
         {
             customerObj = new Epicor.Mfg.BO.Customer(objSess.ConnectionPool);
-            string customerId = ord.getSoldTo();
+            string customerId = ord.CustomerID;
             ds = customerObj.GetCustomer(customerId);
             Epicor.Mfg.BO.CustomerDataSet.CustomerRow row = (Epicor.Mfg.BO.CustomerDataSet.CustomerRow)ds.Customer.Rows[0];
             int custNum = (int)row.CustNum;
@@ -140,11 +140,11 @@ namespace OrderEDI
             hedRow.Company = "CA";
             hedRow.ShortChar01 = "EDI";
 
-            hedRow.PONum = ord.getPoNum();
+            hedRow.PONum = ord.PoNo;
             hedRow.OrderDate = ord.getOrderDate();
             hedRow.NeedByDate = ord.NeedByDate;
             hedRow.RequestDate = ord.getRequestDate();
-            hedRow.ShipToNum = ord.getShipTo();
+            hedRow.ShipToNum = ord.ShipToId;
             hedRow.ShipViaCode = ord.getShipVia();
    
             bool result = true;

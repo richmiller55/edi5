@@ -31,19 +31,31 @@ namespace OrderEDI
             lines.Add(currentLine);
             currentLine = new ShipToOrderLine();
         }
-        public void setPoNum(string poNo){poNumber = poNo;}
-        
-        public void setCustomerId(string custId){customerId = custId;}
+       
         public void setShipTo(string shipTo){shipToId = shipTo;}
         public void setLocation(string gln){shipToId = gln;}
         public void setShipVia(string shipVia) { shipViaCode = shipVia; }
-        public string getSoldTo() { return customerId; }
-        public string getShipTo() { return shipToId; }
-        public string getPoNum() { return poNumber; }
+        
+       
+        
         public string getShipVia() { return shipViaCode; }
         public System.DateTime getOrderDate() { return orderDate; }
         public System.DateTime getRequestDate() { return requestDate; }
-
+        public string CustomerID
+        {
+            get { return customerId; }
+            set { customerId = value; }
+        }
+        public string PoNo
+        {
+            get { return poNumber; }
+            set { poNumber = value; }
+        }
+        public string ShipToId
+        {
+            get { return shipToId; }
+            set { shipToId = value; }
+        }
         public System.DateTime NeedByDate
         {
             get { return needByDate; }
