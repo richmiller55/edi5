@@ -15,6 +15,7 @@ namespace OrderEDI
         System.DateTime orderDate;
         System.DateTime needByDate;
         System.DateTime requestDate;
+        System.DateTime shipNoLaterDate;
         public ArrayList lines;
         protected ShipToOrderLine currentLine;
 
@@ -35,8 +36,6 @@ namespace OrderEDI
         public void setShipTo(string shipTo){shipToId = shipTo;}
         public void setLocation(string gln){shipToId = gln;}
         public void setShipVia(string shipVia) { shipViaCode = shipVia; }
-        
-       
         
         public string getShipVia() { return shipViaCode; }
         public System.DateTime getOrderDate() { return orderDate; }
@@ -60,6 +59,11 @@ namespace OrderEDI
         {
             get { return needByDate; }
             set { needByDate = value; }
+        }
+        public System.DateTime ShipNoLaterDate
+        {
+            get { return shipNoLaterDate; }
+            set { shipNoLaterDate = value; }
         }
         public void setRequestDate(string date)
         {

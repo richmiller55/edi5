@@ -66,6 +66,7 @@ namespace OrderEDI
             hedRow.OrderDate = ord.getOrderDate();
             hedRow.NeedByDate = ord.NeedByDate;
             hedRow.RequestDate = ord.getRequestDate();
+            hedRow.Date01 = ord.ShipNoLaterDate;
             hedRow.ShipToNum = ord.ShipToId;
             hedRow.ShipViaCode = ord.getShipVia();
             // hedRow.ShipViaCode = "UGND";
@@ -144,6 +145,7 @@ namespace OrderEDI
             hedRow.OrderDate = ord.getOrderDate();
             hedRow.NeedByDate = ord.NeedByDate;
             hedRow.RequestDate = ord.getRequestDate();
+            hedRow.Date01 = ord.ShipNoLaterDate;
             hedRow.ShipToNum = ord.ShipToId;
             hedRow.ShipViaCode = ord.getShipVia();
    

@@ -67,6 +67,9 @@ namespace OrderEDI
                             case "RequestDate":
                                 order.setRequestDate(reader.Value);
                                 break;
+                            case "ShipNoLater":
+                                order.ShipNoLaterDate = convertStrToDate(reader.Value);
+                                break;
                             case "NeedByDate":
                                 order.NeedByDate = convertStrToDate(reader.Value);
                                 break;
