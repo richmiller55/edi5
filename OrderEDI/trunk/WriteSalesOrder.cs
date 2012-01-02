@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
-
+using System.Windows.Forms;
 
 namespace OrderEDI
 {
@@ -81,6 +81,10 @@ namespace OrderEDI
             {
                 // header did not post
                 message = e.Message;
+                MessageBox.Show(message.ToString(),
+                    "Sales Order Header Did not Post.",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
                 result = false;
             }
             if (result) {
@@ -113,6 +117,10 @@ namespace OrderEDI
                     catch (Exception e)
                     {
                         message = e.Message;
+                        MessageBox.Show(message.ToString(),
+                            "Sales Order Line Did not Post.",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
                     }
 
                 }
@@ -159,11 +167,14 @@ namespace OrderEDI
             {
                 // header did not post
                 message = e.Message;
+                MessageBox.Show(message.ToString(),
+                    "Sales Order Header Did not Post.",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
                 result = false;
             }
             if (result)
             {
-
                 int orderNum = hedRow.OrderNum;
                 int rowNumber = 0;
 
@@ -193,6 +204,10 @@ namespace OrderEDI
                     catch (Exception e)
                     {
                         message = e.Message;
+                        MessageBox.Show(message.ToString(),
+                            "Sales Order Line Did not Post.",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
                     }
                 }
             }
