@@ -16,9 +16,9 @@ namespace OrderEDI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new Form1());
-            // runDir();
+            runDir();
             // runSDQ();
-            runLCDir();
+            // runLCDir();
         }
         static void runLCDir()
         {
