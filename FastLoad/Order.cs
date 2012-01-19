@@ -12,7 +12,9 @@ namespace FastLoad
         string customerId;
         string shipToNum;
         string shipViaCode;
-
+        string termsCode;
+        string company;
+        string shortChar01 = "EDI";
         System.DateTime orderDate;
         System.DateTime needByDate;
         System.DateTime requestDate;
