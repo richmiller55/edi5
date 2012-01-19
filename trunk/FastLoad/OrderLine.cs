@@ -4,7 +4,6 @@ namespace FastLoad
     {
         int lineNumber;
         string customerPart;
-        string ourPart;
         string upc;
         decimal orderQty;
         decimal unitPrice;
@@ -15,7 +14,7 @@ namespace FastLoad
             // TODO: Add constructor logic here
             //
         }
-         public string CustomerPart
+        public string CustomerPart
         {
             get
             {
@@ -26,6 +25,17 @@ namespace FastLoad
                 customerPart = value;
             }
         }
+        public string Upc
+        {
+            get { return upc;  }
+            set { upc = value; }
+        }
+        public decimal Upc
+        {
+            get { return upc;  }
+            set { upc = value; }
+        }
+
        public void setCustomerPart(string part){customerPart = part;}
         public void setOurPart(string part){ourPart = part;}
         public void setUpc(string part){upc = part;}
@@ -41,7 +51,7 @@ namespace FastLoad
             unitPrice = Convert.ToDecimal(price); 
         }
         public int getLineNo() { return lineNumber; }
-        public string getUpc() { return upc; }
+
         public decimal getQty() {return orderQty;}
         public decimal getUnitPrice(){return unitPrice;}
     }
