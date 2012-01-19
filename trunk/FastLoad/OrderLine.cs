@@ -2,7 +2,7 @@ namespace FastLoad
 {
     public class OrderLine
     {
-        int lineNumber;
+        int lineNum;
         string customerPart;
         string upc;
         decimal orderQty;
@@ -30,29 +30,31 @@ namespace FastLoad
             get { return upc;  }
             set { upc = value; }
         }
-        public decimal Upc
+        public decimal OrderQty
         {
-            get { return upc;  }
-            set { upc = value; }
+            get { return orderQty;  }
+            set { orderQty = value; }
         }
-
-       public void setCustomerPart(string part){customerPart = part;}
-        public void setOurPart(string part){ourPart = part;}
-        public void setUpc(string part){upc = part;}
+        public decimal UnitPrice
+        {
+            get { return unitPrice;  }
+            set { unitPrice = value; }
+        }
+        public decimal LineNum
+        {
+            get { return lineNum;  }
+            set { lineNum = value; }
+        }
 
         public void setLineNo(string lineNo) 
         { 
-            lineNumber = Convert.ToInt32(lineNo); 
+            LineNum = Convert.ToInt32(lineNo); 
         }
         public void setQty(string qty) { 
-            orderQty = Convert.ToDecimal(qty); 
+            OrderQty = Convert.ToDecimal(qty); 
         }
         public void setUnitPrice(string price) { 
-            unitPrice = Convert.ToDecimal(price); 
+            UnitPrice = Convert.ToDecimal(price); 
         }
-        public int getLineNo() { return lineNumber; }
-
-        public decimal getQty() {return orderQty;}
-        public decimal getUnitPrice(){return unitPrice;}
     }
 }

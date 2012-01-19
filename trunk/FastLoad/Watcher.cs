@@ -18,7 +18,8 @@ namespace FastLoad
             string dir = appVars.WatchDirectory;
             string user = appVars.User;
             string pass = appVars.Password;
-            string connectionStr = @"AppServerDC://VantageDB1:" + appVars.DataPort;
+            string dataPort = appVars.DataPort;
+            string connectionStr = @"AppServerDC://VantageDB1:" + dataPort;
             try
             {
                 session = new Epicor.Mfg.Core.Session(user, pass, connectionStr,
