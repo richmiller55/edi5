@@ -60,17 +60,18 @@ namespace FastLoad
             {
                 try
                 {
-                    tr = new StreamReader(fileName);
+                    XmlReader reader = new XmlReader(fileName)
                 }
                 catch (Exception e)
                 {
                     string message = e.Message;
                     report.AddMessage(GetNextMessageKey(), message);
                     AllOk = false;
+
                 }
                 if (AllOk)
                 {
-                    PickCarrier();
+
                     tr.Close();
                 }
                 MoveFile(fileName);
