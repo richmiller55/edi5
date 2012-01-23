@@ -9,15 +9,16 @@ namespace FastLoad
     {
         public string fileName;
         string currentElement;
-        ShipToOrder order;
-        public XmlReader(string dir, string file)
+        SalesOrder order;
+        public XmlReader(string fileName)
         {
-            fileName = dir + file;
-            order = new ShipToOrder();
+            this.fileName = fileName;
+            this.order = new SalesOrder();
+            ReadTheXml();
         }
-        public ShipToOrder getOrder()
+        public SalesOrder getOrder()
         {
-            return order;
+            return this.order;
         }
         public System.DateTime convertStrToDate(string dateStr)
         {
@@ -29,9 +30,9 @@ namespace FastLoad
                 Convert.ToInt32(month), Convert.ToInt32(day));
             return dateObj;
         }
-        public void runIt()
+        public void ReadTheXml()
         {
-            XmlTextReader reader = new XmlTextReader(fileName);
+            XmlTextReader reader = new XmlTextReader(this.fileName);
             while (reader.Read())
             {
                 switch (reader.NodeType)

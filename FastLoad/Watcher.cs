@@ -55,8 +55,7 @@ namespace FastLoad
         {
             if (e.ChangeType == WatcherChangeTypes.Created)
             {
-                UPSReader reader = new UPSReader(this.session,this.report);
-                this.report.UpdatePage();
+                OrderQueue queue = new OrderQueue(this.session);
             }
         }
         private static void OnError(object source, ErrorEventArgs e)

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace FastLoad
 {
-    public class Order
+    public class SalesOrder
     {
         string poNumber;
         string customerId;
@@ -22,7 +22,7 @@ namespace FastLoad
         public ArrayList lines;
         ShipToOrderLine currentLine;
 
-        public Order()
+        public SalesOrder()
         {
             lines = new ArrayList();
             currentLine = new ShipToOrderLine();
@@ -43,10 +43,30 @@ namespace FastLoad
                 shipToNum = value;
             }
         }
-        public void setLocation(string gln){shipToId = gln;}
-        public void setShipVia(string shipVia) { shipViaCode = shipVia; }
-        
-        public string getShipVia() { return shipViaCode; }
+        public string GLN
+        {
+            get
+            {
+                return gln;
+            }
+            set
+            {
+                gln = value;
+            }
+        }            
+        public string ShipVia
+        {
+            get
+            {
+                return shipVia;
+            }
+            set
+            {
+                shipVia = value;
+            }
+        }            
+
+
         public System.DateTime getOrderDate() { return orderDate; }
         public System.DateTime getRequestDate() { return requestDate; }
         public string CustomerID
