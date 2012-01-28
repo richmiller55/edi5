@@ -11,6 +11,7 @@ namespace FastLoad
         string poNumber;
         string customerId;
         string shipToNum;
+        string gln;
         string shipViaCode;
         string termsCode;
         string company;
@@ -20,17 +21,17 @@ namespace FastLoad
         System.DateTime requestDate;
         System.DateTime shipNoLaterDate;
         public ArrayList lines;
-        ShipToOrderLine currentLine;
+        OrderLine currentLine;
 
         public SalesOrder()
         {
             lines = new ArrayList();
-            currentLine = new ShipToOrderLine();
+            currentLine = new OrderLine();
         }
         public void postLine()
         {
             lines.Add(currentLine);
-            currentLine = new ShipToOrderLine();
+            currentLine = new OrderLine();
         }
         public string ShipToNum
         {
@@ -58,17 +59,13 @@ namespace FastLoad
         {
             get
             {
-                return shipVia;
+                return shipViaCode;
             }
             set
             {
-                shipVia = value;
+                shipViaCode = value;
             }
         }            
-
-
-        public System.DateTime getOrderDate() { return orderDate; }
-        public System.DateTime getRequestDate() { return requestDate; }
         public string CustomerID
         {
             get { return customerId; }
@@ -78,11 +75,6 @@ namespace FastLoad
         {
             get { return poNumber; }
             set { poNumber = value; }
-        }
-        public string ShipToId
-        {
-            get { return shipToId; }
-            set { shipToId = value; }
         }
         public System.DateTime NeedByDate
         {
@@ -94,29 +86,35 @@ namespace FastLoad
             get { return shipNoLaterDate; }
             set { shipNoLaterDate = value; }
         }
-        public void setRequestDate(string date)
+        public System.DateTime RequestDate
         {
-            requestDate = convertStrToDate(date);
+            get { return requestDate; }
+            set { requestDate = value; }
         }
-        public void setOrderDate(string date)
+        public System.DateTime OrderDate
         {
-            orderDate = convertStrToDate(date);
+            get { return orderDate; }
+            set { orderDate = value; }
         }
-        public void setOrderLineNo(string lineno)
+        public decimal OrderQty
         {
-            currentLine.setLineNo(lineno);
+            get { return currentLine.OrderQty; }
+            set { currentLine.OrderQty = value; }
         }
-        public void setUpc(string part)
+        public int OrderLineNum
         {
-            currentLine.setUpc(part);
+            get { return currentLine.LineNum; }
+            set { currentLine.LineNum = value; }
         }
-        public void setOrderQty(string qty)
+        public decimal UnitPrice
         {
-            currentLine.setQty(qty);
+            get { return currentLine.UnitPrice; }
+            set { currentLine.UnitPrice = value; }
         }
-        public void setUnitPrice(string price)
+        public string Upc
         {
-            currentLine.setUnitPrice(price);
+            get { return currentLine.Upc; }
+            set { currentLine.Upc = value; }
         }
         public System.DateTime convertStrToDate(string dateStr)
         {
@@ -128,6 +126,6 @@ namespace FastLoad
                 Convert.ToInt32(month), Convert.ToInt32(day));
             return dateObj;
         }
-
+        // public string getPoNum() { return PoNo + ":" + ShipToId; }
     }
 }
