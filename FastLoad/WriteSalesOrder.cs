@@ -37,7 +37,7 @@ namespace FastLoad
             }
             return descr;
         }
-        public void ProcessOrder(Order ord)
+        public void ProcessOrder(SalesOrder ord)
         {
             customerObj = new Epicor.Mfg.BO.Customer(objSess.ConnectionPool);
             string customerId = ord.CustomerID;
@@ -129,7 +129,7 @@ namespace FastLoad
     }
     class WriteShipToOrder : WriteSalesOrder
     {
-        public void ProcessOrder(ShipToOrder ord)
+        public void ProcessOrder(SalesOrder ord)
         {
             customerObj = new Epicor.Mfg.BO.Customer(objSess.ConnectionPool);
             string customerId = ord.CustomerID;

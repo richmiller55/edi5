@@ -7,13 +7,13 @@ namespace FastLoad
 {
     public class AppVarsMgr
     {
-        string m_user = "";
-        string m_password = "";
-        string m_watchDirectory = "";
-        string m_database = "test";
-        string m_dataPort;
-        string m_regularBatch = "";
-        string m_buyGroupBatch = "";
+        string user = "";
+        string password = "";
+        string watchDirectory = "";
+        string database = "test";
+        string dataPort;
+        string deferDirectory;
+        string processedDirectory;
 
         string file = "appVars.xml";
         public AppVarsMgr()
@@ -58,11 +58,11 @@ namespace FastLoad
                         case "dataPort":
                             DataPort = readValue;
                             break;
-                        case "buyGroupBatch":
-                            BuyGroupBatch = readValue;
+                        case "processedDirectory":
+                            ProcessedDirectory = readValue;
                             break;
-                        case "regularBatch":
-                            RegularBatch = readValue;
+                        case "deferDirectory":
+                            DeferDirectory = readValue;
                             break;
                     }
                 }
@@ -72,77 +72,77 @@ namespace FastLoad
         {
             get
             {
-                return m_user;
+                return user;
             }
             set
             {
-                m_user = value;
+                user = value;
             }
         }
         public string Password
         {
             get
             {
-                return m_password;
+                return password;
             }
             set
             {
-                m_password = value;
+                password = value;
             }
         }
         public string WatchDirectory
         {
             get
             {
-                return m_watchDirectory;
+                return watchDirectory;
             }
             set
             {
-                m_watchDirectory = value;
+                watchDirectory = value;
             }
         }
         public string Database
         {
             get
             {
-                return m_database;
+                return database;
             }
             set
             {
-                m_database = value;
+                database = value;
             }
         }
         public string DataPort
         {
             get
             {
-                return m_dataPort;
+                return dataPort;
             }
             set
             {
-                m_dataPort = value;
+                dataPort = value;
             }
         }
-        public string RegularBatch
+        public string DeferDirectory
         {
             get
             {
-                return m_regularBatch;
+              return deferDirectory;
             }
             set
             {
-                m_regularBatch = value;
+                deferDirectory = value;
             }
         }
-        public string BuyGroupBatch
+        public string ProcessedDirectory
         {
             get
             {
-                return m_buyGroupBatch;
+              return processedDirectory;
             }
             set
             {
-                m_buyGroupBatch = value;
+              processedDirectory = value;
             }
         }
     }

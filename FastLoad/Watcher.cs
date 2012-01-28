@@ -11,7 +11,6 @@ namespace FastLoad
         FileSystemWatcher watcher;
         Epicor.Mfg.Core.Session session;
         AppVarsMgr appVars;
-        ExReport report = new ExReport();
         public Watcher()
         {
             this.appVars = new AppVarsMgr();
@@ -29,8 +28,8 @@ namespace FastLoad
             {
                 string message = e.Message;
                 MessageBox.Show("Login failed - Check xml and retry " + message );
-                this.report.AddMessage("loginFailed", message + " user " + appVars.User);
-                this.report.UpdatePage();
+                // this.report.AddMessage("loginFailed", message + " user " + appVars.User);
+                // this.report.UpdatePage();
                 Application.Exit();
             }
             watcher = new FileSystemWatcher(dir, "*.*");

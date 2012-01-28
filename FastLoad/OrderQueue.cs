@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using System.IO;
-using System.Web.UI;
+// using System.Web.UI;
 
 namespace FastLoad
 {
@@ -37,8 +37,8 @@ namespace FastLoad
         string nowPath = @"I:\users\edi\FastLoad\now";
         string dumpPath = @"D:\users\edi\FastLoad\dump";
         StreamReader tr;
-        DeferEntry deferEntry;  // need to write this
-        CouchDBLogger cdbLog;   // what the hell did you do
+        // DeferEntry deferEntry;  // need to write this
+        // CouchDBLogger cdbLog;   // what the hell did you do
 
         Epicor.Mfg.Core.Session session;
 
@@ -60,7 +60,7 @@ namespace FastLoad
             {
                 try
                 {
-                    XmlReader reader = new XmlReader(fileName)
+                    XmlReader reader = new XmlReader(fileName);
                 }
                 catch (Exception e)
                 {

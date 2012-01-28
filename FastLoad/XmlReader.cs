@@ -49,24 +49,22 @@ namespace FastLoad
                                 order.PoNo = reader.Value;
                                 break;
                             case "ShipToNum":
-                                order.ShipToId = reader.Value;
-                                order.setShipToLine(reader.Value);
+                                order.ShipToNum = reader.Value;
                                 break;
                             case "ShipTo":
-                                order.ShipToId = reader.Value;
-                                order.setShipToLine(reader.Value);
+                                order.ShipToNum = reader.Value;
                                 break;
                             case "ShipViaCode":
-                                order.setShipVia(reader.Value);
+                                order.ShipVia = reader.Value;
                                 break;
                             case "Character01":
-                                order.setLocation(reader.Value);
+                                order.GLN = reader.Value;
                                 break;
                             case "BTCustID":
                                 order.CustomerID = reader.Value;
                                 break;
                             case "RequestDate":
-                                order.setRequestDate(reader.Value);
+                                order.RequestDate = convertStrToDate(reader.Value);
                                 break;
                             case "ShipNoLater":
                                 order.ShipNoLaterDate = convertStrToDate(reader.Value);
@@ -75,20 +73,20 @@ namespace FastLoad
                                 order.NeedByDate = convertStrToDate(reader.Value);
                                 break;
                             case "OrderDate":
-                                order.setOrderDate(reader.Value);
+                                order.OrderDate = convertStrToDate(reader.Value);
                                 break;
                             case "OrderLine":
-                                order.setOrderLineNo(reader.Value);
+                                order.OrderLineNum = System.Convert.ToInt32(reader.Value);
                                 break;
                             case "PartNum":
-                                order.setUpc(reader.Value);
+                                order.Upc = reader.Value;
                                 break;
                             case "OrderQty":
-                                order.setOrderQty(reader.Value);
+                                order.OrderQty = System.Convert.ToDecimal(reader.Value);
                                 break;
                             case "UnitPrice":
-                                order.setUnitPrice(reader.Value);
-                                order.postLine();
+                                order.UnitPrice = System.Convert.ToDecimal(reader.Value);
+                                order.postLine();  // are we sure this is the best way 
                                 break;
                         }
                         break;
