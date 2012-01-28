@@ -17,10 +17,15 @@ namespace FastLoad
         protected Epicor.Mfg.Core.Session objSess;
         protected Epicor.Mfg.BO.Customer customerObj;
         protected Epicor.Mfg.BO.CustomerDataSet ds;
+        AppVarsMgr vars;
         public WriteSalesOrder()
         {
-            objSess = new Epicor.Mfg.Core.Session("rich", "homefed55",
-                "AppServerDC://VantageDB1:8301", Epicor.Mfg.Core.Session.LicenseType.Default);
+            v = new AppVarsMgr();
+
+            objSess = new Epicor.Mfg.Core.Session(v.user, v.Password,
+                v.ServerUrl + ":" + v.DataPort, 
+                Epicor.Mfg.Core.Session.LicenseType.Default);
+
         }
         public string getPartDescr(string partNumber)
         {
@@ -150,12 +155,13 @@ namespace FastLoad
             hedRow.ShortChar01 = "EDI";
 
             hedRow.PONum = ord.PoNo;
-            hedRow.OrderDate = ord.getOrderDate();
-            hedRow.NeedByDate = ord.NeedByDate;
-            hedRow.RequestDate = ord.getRequestDate();
-            hedRow.Date01 = ord.ShipNoLaterDate;
-            hedRow.ShipToNum = ord.ShipToId;
-            hedRow.ShipViaCode = ord.getShipVia();
+            // ord has to ensure that these dates are valid 
+            hedRow.OrderDate   = ord.OrderDate;
+            hedRow.NeedByDate  = ord.NeedByDate;
+            hedRow.RequestDate = ord.RequestDate;
+            hedRow.Date01      = ord.ShipNoLaterDate;
+            hedRow.ShipToNum   = ord.ShipToId;
+            hedRow.ShipViaCode = ord.ShipVia;
    
             bool result = true;
             string message;
@@ -184,17 +190,16 @@ namespace FastLoad
                     Epicor.Mfg.BO.SalesOrderDataSet.OrderDtlRow dtlRow =
                         (Epicor.Mfg.BO.SalesOrderDataSet.OrderDtlRow)soDs.OrderDtl.Rows[rowNumber];
                     rowNumber++;
-
-                    dtlRow.OrderQty = line.getQty();
                     
-                    string partNumber = line.getUpc();
+                    string partNumber = line.Upc;
                     dtlRow.PartNum = partNumber;
                     
                     string partDescr = getPartDescr(partNumber);
                     dtlRow.LineDesc = partDescr;
                     dtlRow.RowMod = "A";
-                    dtlRow.UnitPrice = line.getUnitPrice();
-                    dtlRow.DocUnitPrice = line.getUnitPrice();
+                    dtlRow.OrderQty = line.OrderQty;
+                    dtlRow.UnitPrice = line.UnitPrice;
+                    dtlRow.DocUnitPrice = line.UnitPrice;
 
                     message = "OK Line";
                     try

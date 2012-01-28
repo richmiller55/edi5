@@ -11,6 +11,7 @@ namespace FastLoad
         string password = "";
         string watchDirectory = "";
         string database = "test";
+        string serverUrl = "AppServerDC://VantageDB1";
         string dataPort;
         string deferDirectory;
         string processedDirectory;
@@ -99,6 +100,17 @@ namespace FastLoad
             set
             {
                 watchDirectory = value;
+            }
+        }
+        public string ServerUrl
+        {
+            get
+            {
+                return serverUrl;
+            }
+            set
+            {
+                serverUrl = value;
             }
         }
         public string Database
