@@ -56,6 +56,9 @@ namespace FastLoad
                             break;
                         case "database":
                             break;
+                        case "serverUrl":
+                            ServerUrl = readValue;
+                            break;
                         case "dataPort":
                             DataPort = readValue;
                             break;
