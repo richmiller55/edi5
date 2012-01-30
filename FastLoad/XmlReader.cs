@@ -16,7 +16,7 @@ namespace FastLoad
             this.order = new SalesOrder();
             ReadTheXml();
         }
-        public SalesOrder getOrder()
+        public SalesOrder GetSalesOrder()
         {
             return this.order;
         }
@@ -83,6 +83,15 @@ namespace FastLoad
                                 break;
                             case "OrderQty":
                                 order.OrderQty = System.Convert.ToDecimal(reader.Value);
+                                break;
+                            case "SellingFactor":
+                                order.SellingFactor = System.Convert.ToDecimal(reader.Value);
+                                break;
+                            case "SellingFactorDirection":
+                                order.SellingFactorDirection = reader.Value;
+                                break;
+                            case "SellingFactorQty":
+                                order.SellingQty = System.Convert.ToDecimal(reader.Value);
                                 break;
                             case "UnitPrice":
                                 order.UnitPrice = System.Convert.ToDecimal(reader.Value);

@@ -17,17 +17,17 @@ namespace FastLoad
         protected Epicor.Mfg.Core.Session objSess;
         protected Epicor.Mfg.BO.Customer customerObj;
         protected Epicor.Mfg.BO.CustomerDataSet ds;
-        AppVarsMgr vars;
+        AppVarsMgr v;
         public WriteSalesOrder()
         {
             v = new AppVarsMgr();
 
-            objSess = new Epicor.Mfg.Core.Session(v.user, v.Password,
+            objSess = new Epicor.Mfg.Core.Session(v.User, v.Password,
                 v.ServerUrl + ":" + v.DataPort, 
                 Epicor.Mfg.Core.Session.LicenseType.Default);
 
         }
-        public string getPartDescr(string partNumber)
+        protected string getPartDescr(string partNumber)
         {
             Epicor.Mfg.BO.PartDataSet partDs;
             Epicor.Mfg.BO.Part partObj = new Epicor.Mfg.BO.Part(objSess.ConnectionPool);
@@ -58,7 +58,7 @@ namespace FastLoad
             Epicor.Mfg.BO.SalesOrderDataSet.OrderHedRow hedRow = (Epicor.Mfg.BO.SalesOrderDataSet.OrderHedRow)soDs.OrderHed.Rows[0];
             hedRow.CustomerCustID = customerId;
             hedRow.CustNum = custNum;
-            string shipTo = ord.ShipToId;
+            string shipTo = ord.ShipToNum;
             // my expectation here is that ord should return 0
             // unless it is set. ord is so primitive bring the 
             // xml code over, of course
@@ -68,12 +68,12 @@ namespace FastLoad
             hedRow.Company = "CA";
             hedRow.ShortChar01 = "EDI";
             hedRow.PONum = ord.PoNo;
-            hedRow.OrderDate = ord.getOrderDate();
+            hedRow.OrderDate = ord.OrderDate;
             hedRow.NeedByDate = ord.NeedByDate;
-            hedRow.RequestDate = ord.getRequestDate();
+            hedRow.RequestDate = ord.RequestDate;
             hedRow.Date01 = ord.ShipNoLaterDate;
-            hedRow.ShipToNum = ord.ShipToId;
-            hedRow.ShipViaCode = ord.getShipVia();
+            hedRow.ShipToNum = ord.ShipToNum;
+            hedRow.ShipViaCode = ord.ShipVia;
             // hedRow.ShipViaCode = "UGND";
             bool result = true;
             
@@ -86,7 +86,7 @@ namespace FastLoad
             {
                 // header did not post
                 message = e.Message;
-                MessageBox.Show(message.ToString() + " ship to: " + ord.ShipToId.ToString(),
+                MessageBox.Show(message.ToString() + " ship to: " + ord.ShipToNum.ToString(),
                     "Sales Order Header Did not Post.",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -104,15 +104,15 @@ namespace FastLoad
                         (Epicor.Mfg.BO.SalesOrderDataSet.OrderDtlRow)soDs.OrderDtl.Rows[rowNumber];
                     rowNumber++;
 
-                    dtlRow.OrderQty = line.getQty();
-                    string partNumber = line.getUpc();
+                    dtlRow.OrderQty = line.OrderQty;
+                    string partNumber = line.Upc;
                     dtlRow.PartNum = partNumber;
                     // dtlRow.RevisionNum = "1";
                     string partDescr = getPartDescr(partNumber);
                     dtlRow.LineDesc = partDescr;
                     dtlRow.RowMod = "A";
-                    dtlRow.UnitPrice = line.getUnitPrice();
-                    dtlRow.DocUnitPrice = line.getUnitPrice();
+                    dtlRow.UnitPrice = line.UnitPrice;
+                    dtlRow.DocUnitPrice = line.UnitPrice;
 
                     message = "OK Line";
                     try
@@ -160,7 +160,7 @@ namespace FastLoad
             hedRow.NeedByDate  = ord.NeedByDate;
             hedRow.RequestDate = ord.RequestDate;
             hedRow.Date01      = ord.ShipNoLaterDate;
-            hedRow.ShipToNum   = ord.ShipToId;
+            hedRow.ShipToNum   = ord.ShipToNum;
             hedRow.ShipViaCode = ord.ShipVia;
    
             bool result = true;
@@ -173,7 +173,7 @@ namespace FastLoad
             {
                 // header did not post
                 message = e.Message;
-              MessageBox.Show(message.ToString() + " ship to: " + ord.ShipToId.ToString(),
+              MessageBox.Show(message.ToString() + " ship to: " + ord.ShipToNum.ToString(),
                     "Sales Order Header Did not Post.",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -184,7 +184,7 @@ namespace FastLoad
                 int orderNum = hedRow.OrderNum;
                 int rowNumber = 0;
 
-                foreach (ShipToOrderLine line in ord.lines)
+                foreach (OrderLine line in ord.lines)
                 {
                     salesOrderObj.GetNewOrderDtl(soDs, orderNum);
                     Epicor.Mfg.BO.SalesOrderDataSet.OrderDtlRow dtlRow =
@@ -197,6 +197,9 @@ namespace FastLoad
                     string partDescr = getPartDescr(partNumber);
                     dtlRow.LineDesc = partDescr;
                     dtlRow.RowMod = "A";
+                    dtlRow.SellingFactor;
+                    dtlRow.SellingFactorDirection;
+                    dtlRow.SellingQuantity;
                     dtlRow.OrderQty = line.OrderQty;
                     dtlRow.UnitPrice = line.UnitPrice;
                     dtlRow.DocUnitPrice = line.UnitPrice;

@@ -71,10 +71,26 @@ namespace FastLoad
             get { return customerId; }
             set { customerId = value; }
         }
+        public string OrderSource
+        {
+            get { return shortChar01; }
+            set { shortChar01 = value; }
+        }
+
         public string PoNo
         {
             get { return poNumber; }
             set { poNumber = value; }
+        }
+        public string TermsCode
+        {
+            get { return termsCode; }
+            set { termsCode = value; }
+        }
+        public string Company
+        {
+            get { return company; }
+            set { company = value; }
         }
         public System.DateTime NeedByDate
         {
@@ -110,6 +126,21 @@ namespace FastLoad
         {
             get { return currentLine.UnitPrice; }
             set { currentLine.UnitPrice = value; }
+        }
+        public decimal SellingFactor
+        {
+            get { return currentLine.SellingFactor; }
+            set { currentLine.SellingFactor = value; }
+        }
+        public decimal SellingQty
+        {
+            get { return currentLine.SellingQty; }
+            set { currentLine.SellingQty = value; }
+        }
+        public string SellingFactorDirection
+        {
+            get { return currentLine.SellingFactorDirection; }
+            set { currentLine.SellingFactorDirection = value; }
         }
         public string Upc
         {
