@@ -34,17 +34,17 @@ namespace FastLoad
     }
     class OrderQueue
     {
-        string nowPath = @"I:\users\edi\FastLoad\now";
-        string dumpPath = @"D:\users\edi\FastLoad\dump";
-        StreamReader tr;
         // DeferEntry deferEntry;  // need to write this
         // CouchDBLogger cdbLog;   // what the hell did you do
 
         Epicor.Mfg.Core.Session session;
-
+        AppVarsMgr vars;
         public OrderQueue(Epicor.Mfg.Core.Session vanSession)
         {
             this.session = vanSession;
+            vars = new AppVarsMgr();
+            string watchPath = vars.WatchDirectory;
+            
             /* not lots of exta sessions, just one,
             // should be able to log itself, the logger
             // maybe should hang around, retry tear down
@@ -54,35 +54,36 @@ namespace FastLoad
             // 
             */
 
-            string[] filePaths = Directory.GetFiles(this.fullPath);
+            string[] filePaths = Directory.GetFiles(watchPath);
             bool AllOk = true;
+            WriteSalesOrder writer = new WriteSalesOrder();
             foreach (string fileName in filePaths)
             {
                 try
                 {
                     XmlReader reader = new XmlReader(fileName);
+                    SalesOrder salesOrder = reader.GetSalesOrder();
+                    writer.ProcessOrder(salesOrder);
                 }
                 catch (Exception e)
                 {
                     string message = e.Message;
-                    report.AddMessage(GetNextMessageKey(), message);
                     AllOk = false;
-
                 }
+
                 if (AllOk)
                 {
-
-                    tr.Close();
+                    MoveFile(fileName, AllOk);
                 }
-                MoveFile(fileName);
-                if (AllOk)
+                else
                 {
-                    InvoiceShipment();
+                    MoveFile(fileName, false);
                 }
             }
         }
-        private void MoveFile(string fullName)
+        private void MoveFile(string fullName,bool AllOk)
         {
+
             string fileName = Path.GetFileName(fullName);
             string prefix = Path.GetFileNameWithoutExtension(fullName);
 
@@ -94,9 +95,14 @@ namespace FastLoad
                           now.Minute.ToString("00") + 
                           now.Second.ToString("00");
             string newFileName = prefix + "_" + date + "_" + time + ".txt";
+            string dumpPath = vars.DeferDirectory;
+            if (AllOk)
+            {
+                dumpPath = vars.ProcessedDirectory;
+            }
             File.Move(fullName, dumpPath + "\\" + newFileName);
             string message = "New File Name " + newFileName;
-            report.AddMessage(GetNextMessageKey(), message);
+
         }
         public System.DateTime convertStrToDate(string dateStr)
         {
@@ -107,12 +113,6 @@ namespace FastLoad
             System.DateTime dateObj = new DateTime(Convert.ToInt32(year),
                 Convert.ToInt32(month), Convert.ToInt32(day));
             return dateObj;
-        }
-        public string GetNextMessageKey()
-        {
-            string messKey = this.messPrefix + this.messCount.ToString();
-            this.messCount += 1;
-            return messKey;
         }
     }
 }

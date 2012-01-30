@@ -26,7 +26,6 @@ namespace FastLoad
         {
             //
         }
-
         public string CustId
         {
             get

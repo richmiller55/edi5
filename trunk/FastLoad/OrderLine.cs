@@ -7,6 +7,10 @@ namespace FastLoad
         string upc;
         decimal orderQty;
         decimal unitPrice;
+        decimal sellingFactor;
+        string sellingFactorDirection;
+        decimal sellingQty;
+
         string shipToNum;
 
         public OrderLine()
@@ -41,6 +45,17 @@ namespace FastLoad
             get { return unitPrice;  }
             set { unitPrice = value; }
         }
+        public decimal SellingFactor
+        {
+            get { return sellingFactor; }
+            set { sellingFactor = value; }
+        }
+        public decimal SellingQty
+        {
+            get { return sellingQty; }
+            set { sellingQty = value; }
+        }
+        
         public int LineNum
         {
             get { return lineNum;  }
@@ -50,6 +65,11 @@ namespace FastLoad
         {
             get { return shipToNum;  }
             set { shipToNum = value; }
+        }
+        public string SellingFactorDirection
+        {
+            get { return sellingFactorDirection; }
+            set { sellingFactorDirection = value; }
         }
     }
 }
