@@ -323,6 +323,19 @@ namespace ObjEdi
             partXref.Add("44851111", "757026211117");
             partXref.Add("44851145", "757026220447");
             partXref.Add("44850493", "757026211001");
+
+            partXref.Add("45922796", "757026221932");
+            partXref.Add("45922846", "757026216785");
+            partXref.Add("45922937", "757026201866");
+            partXref.Add("45923158", "757026208308");
+            partXref.Add("45923240", "757026220447");
+            partXref.Add("45923299", "757026189386");
+            partXref.Add("45923489", "757026198388");
+            partXref.Add("45923737", "757026220430");
+            partXref.Add("45923836", "757026221871");
+            partXref.Add("45923869", "757026221925");
+
+
         }
         void initShipVia()
         {
@@ -399,6 +412,7 @@ namespace ObjEdi
             shipViaHash.Add("349", "DOAK");
             shipViaHash.Add("351", "DOAK");
             shipViaHash.Add("354", "DOAK");
+            shipViaHash.Add("357", "DOAK");
             shipViaHash.Add("1", "AOAK");
             shipViaHash.Add("3", "AOAK");
             shipViaHash.Add("4", "AOAK");
@@ -574,6 +588,7 @@ namespace ObjEdi
             shipViaHash.Add("348", "AOAK");
             shipViaHash.Add("352", "AOAK");
             shipViaHash.Add("353", "AOAK");
+            shipViaHash.Add("356", "AOAK");
             shipViaHash.Add("703", "AOAK");
             shipViaHash.Add("704", "AOAK");
             shipViaHash.Add("80", "COAK");
@@ -610,6 +625,7 @@ namespace ObjEdi
             shipViaHash.Add("340", "COAK");
             shipViaHash.Add("347", "COAK");
             shipViaHash.Add("350", "COAK");
+            shipViaHash.Add("355", "COAK");
             shipViaHash.Add("701", "COAK");
         }
         string getShipVia(string store)
