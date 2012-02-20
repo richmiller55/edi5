@@ -87,6 +87,9 @@ namespace OrderEDI
                                 break;
                             case "UnitPrice":
                                 order.setUnitPrice(reader.Value);
+                                break;
+                            case "SellFactor":
+                                order.setSellFactor(reader.Value);
                                 order.postLine();
                                 break;
                         }

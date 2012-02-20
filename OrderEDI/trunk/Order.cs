@@ -89,6 +89,10 @@ namespace OrderEDI
         {
             currentLine.setUnitPrice(price);
         }
+        public void setSellFactor(string sellFactor)
+        {
+            currentLine.setSellFactor(sellFactor);
+        }
         public System.DateTime convertStrToDate(string dateStr)
         {
             string year = dateStr.Substring(0, 4);
@@ -109,6 +113,7 @@ namespace OrderEDI
         protected string upc;
         protected decimal orderQty;
         protected decimal unitPrice;
+        protected decimal sellFactor;
 
         public OrderLine()
         {
@@ -130,9 +135,14 @@ namespace OrderEDI
         public void setUnitPrice(string price) { 
             unitPrice = Convert.ToDecimal(price); 
         }
+        public void setSellFactor(string sellFactor)
+        {
+            this.sellFactor = Convert.ToDecimal(sellFactor);
+        }
         public int getLineNo() { return lineNumber; }
         public string getUpc() { return upc; }
         public decimal getQty() {return orderQty;}
         public decimal getUnitPrice(){return unitPrice;}
+        public decimal getSellFactor() { return sellFactor; }
     }
 }
