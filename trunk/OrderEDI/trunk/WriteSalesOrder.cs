@@ -108,6 +108,9 @@ namespace OrderEDI
                     dtlRow.RowMod = "A";
                     dtlRow.UnitPrice = line.getUnitPrice();
                     dtlRow.DocUnitPrice = line.getUnitPrice();
+                    dtlRow.SellingFactor = line.getSellFactor();
+                    dtlRow.SellingFactorDirection = "M";
+                    dtlRow.SellingQuantity = line.getQty();
 
                     message = "OK Line";
                     try
