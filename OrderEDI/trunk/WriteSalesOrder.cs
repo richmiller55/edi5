@@ -98,7 +98,7 @@ namespace OrderEDI
                     Epicor.Mfg.BO.SalesOrderDataSet.OrderDtlRow dtlRow =
                         (Epicor.Mfg.BO.SalesOrderDataSet.OrderDtlRow)soDs.OrderDtl.Rows[rowNumber];
                     rowNumber++;
-
+                    
                     dtlRow.OrderQty = line.getQty();
                     string partNumber = line.getUpc();
                     dtlRow.PartNum = partNumber;
@@ -111,7 +111,11 @@ namespace OrderEDI
                     dtlRow.SellingFactor = line.getSellFactor();
                     dtlRow.SellingFactorDirection = "M";
                     dtlRow.SellingQuantity = line.getQty();
-
+                    string custPart = line.getCustomerPart();
+                    if (custPart.Equals("550399692"))
+                    {
+                        dtlRow.XPartNum = custPart;
+                    }
                     message = "OK Line";
                     try
                     {

@@ -93,6 +93,10 @@ namespace OrderEDI
         {
             currentLine.setSellFactor(sellFactor);
         }
+        public void setCustomerPart(string customerPart)
+        {
+            currentLine.setCustomerPart(customerPart);
+        }
         public System.DateTime convertStrToDate(string dateStr)
         {
             string year = dateStr.Substring(0, 4);
@@ -141,6 +145,8 @@ namespace OrderEDI
         }
         public int getLineNo() { return lineNumber; }
         public string getUpc() { return upc; }
+        public string getCustomerPart() { return customerPart; }
+ 
         public decimal getQty() {return orderQty;}
         public decimal getUnitPrice(){return unitPrice;}
         public decimal getSellFactor() { return sellFactor; }

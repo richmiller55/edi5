@@ -82,6 +82,9 @@ namespace OrderEDI
                             case "PartNum":
                                 order.setUpc(reader.Value);
                                 break;
+                            case "CustomerPart":
+                                order.setCustomerPart(reader.Value);
+                                break;
                             case "OrderQty":
                                 order.setOrderQty(reader.Value);
                                 break;
