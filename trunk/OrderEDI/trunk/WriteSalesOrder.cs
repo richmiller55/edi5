@@ -111,10 +111,22 @@ namespace OrderEDI
                     dtlRow.SellingFactor = line.getSellFactor();
                     dtlRow.SellingFactorDirection = "M";
                     dtlRow.SellingQuantity = line.getQty();
-                    string custPart = line.getCustomerPart();
-                    if (custPart.Equals("550399692"))
+                    string custPart = "";
+                    try
                     {
-                        dtlRow.XPartNum = custPart;
+                        custPart = line.getCustomerPart();
+                        if (custPart.Equals("550399692"))
+                        {
+                            dtlRow.XPartNum = custPart;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        message = e.Message;
+                        MessageBox.Show(message.ToString(),
+                            "Sales Order Line Did not Post. Customer Part issue",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation);
                     }
                     message = "OK Line";
                     try

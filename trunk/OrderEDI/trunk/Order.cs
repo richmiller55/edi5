@@ -121,6 +121,7 @@ namespace OrderEDI
 
         public OrderLine()
         {
+            this.customerPart = "";
             //
             // TODO: Add constructor logic here
             //
