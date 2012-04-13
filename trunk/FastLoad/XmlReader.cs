@@ -107,6 +107,7 @@ namespace FastLoad
                         break;
                 }
             }
+            reader.Close();
             // Console.ReadLine();
         }
     }

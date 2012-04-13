@@ -63,7 +63,7 @@ namespace FastLoad
                 {
                     XmlReader reader = new XmlReader(fileName);
                     SalesOrder salesOrder = reader.GetSalesOrder();
-                    writer.ProcessOrder(salesOrder);
+                     writer.ProcessOrder(salesOrder);
                 
                 }
                 catch (Exception e)
@@ -84,7 +84,6 @@ namespace FastLoad
         }
         private void MoveFile(string fullName,bool AllOk)
         {
-
             string fileName = Path.GetFileName(fullName);
             string prefix = Path.GetFileNameWithoutExtension(fullName);
 
@@ -101,9 +100,15 @@ namespace FastLoad
             {
                 dumpPath = vars.ProcessedDirectory;
             }
-            File.Move(fullName, dumpPath + "\\" + newFileName);
-            string message = "New File Name " + newFileName;
-
+            System.Threading.Thread.Sleep(5000);
+            try
+            {
+                File.Move(fullName, dumpPath + "\\" + newFileName);
+            }
+            catch (Exception e)
+            {
+                string message = e.Message;
+            }
         }
         public System.DateTime convertStrToDate(string dateStr)
         {
