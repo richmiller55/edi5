@@ -134,7 +134,7 @@ namespace FastLoad
     }
     class WriteShipToOrder : WriteSalesOrder
     {
-        public void ProcessOrder(SalesOrder ord)
+        new public void ProcessOrder(SalesOrder ord)
         {
             customerObj = new Epicor.Mfg.BO.Customer(objSess.ConnectionPool);
             string customerId = ord.CustomerID;
@@ -197,9 +197,9 @@ namespace FastLoad
                     string partDescr = getPartDescr(partNumber);
                     dtlRow.LineDesc = partDescr;
                     dtlRow.RowMod = "A";
-                    dtlRow.SellingFactor;
-                    dtlRow.SellingFactorDirection;
-                    dtlRow.SellingQuantity;
+                    dtlRow.SellingFactor = line.SellingFactor;
+                    dtlRow.SellingFactorDirection = line.SellingFactorDirection;
+                    dtlRow.SellingQuantity = line.SellingQty;
                     dtlRow.OrderQty = line.OrderQty;
                     dtlRow.UnitPrice = line.UnitPrice;
                     dtlRow.DocUnitPrice = line.UnitPrice;
