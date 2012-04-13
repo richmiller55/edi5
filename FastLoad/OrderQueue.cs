@@ -64,6 +64,7 @@ namespace FastLoad
                     XmlReader reader = new XmlReader(fileName);
                     SalesOrder salesOrder = reader.GetSalesOrder();
                     writer.ProcessOrder(salesOrder);
+                
                 }
                 catch (Exception e)
                 {
