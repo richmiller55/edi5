@@ -110,6 +110,12 @@ namespace FastLoad
                     // dtlRow.RevisionNum = "1";
                     string partDescr = getPartDescr(partNumber);
                     dtlRow.LineDesc = partDescr;
+                    string custPart = line.CustomerPart;
+                    if (!line.CustomerPart.Equals(""))
+                    {
+                        dtlRow.XPartNum = line.CustomerPart;
+                    }
+
                     dtlRow.RowMod = "A";
                     dtlRow.UnitPrice = line.UnitPrice;
                     dtlRow.DocUnitPrice = line.UnitPrice;
@@ -134,6 +140,10 @@ namespace FastLoad
     }
     class WriteShipToOrder : WriteSalesOrder
     {
+        /* maybe this one is not in use now
+         * 
+         */
+
         new public void ProcessOrder(SalesOrder ord)
         {
             customerObj = new Epicor.Mfg.BO.Customer(objSess.ConnectionPool);

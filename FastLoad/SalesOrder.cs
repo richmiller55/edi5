@@ -132,6 +132,11 @@ namespace FastLoad
             get { return currentLine.SellingFactor; }
             set { currentLine.SellingFactor = value; }
         }
+        public string CustomerPart
+        {
+            get { return currentLine.CustomerPart; }
+            set { currentLine.CustomerPart = value; }
+        }
         public decimal SellingQty
         {
             get { return currentLine.SellingQty; }
