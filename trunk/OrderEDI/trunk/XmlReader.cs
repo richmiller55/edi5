@@ -93,15 +93,19 @@ namespace OrderEDI
                                 break;
                             case "SellFactor":
                                 order.setSellFactor(reader.Value);
-                                order.postLine();
                                 break;
                         }
                         break;
                         //Console.WriteLine(reader.Value);
                         
-                    case XmlNodeType.EndElement: //Display the end of the element.
-                        Console.Write("</" + reader.Name);
-                        Console.WriteLine(">");
+                    case XmlNodeType.EndElement: 
+                        currentElement = reader.Name;
+                        switch (currentElement)
+                        {
+                            case "OrderDt":
+                                order.postLine();
+                                break;
+                        }
                         break;
                 }
             }
