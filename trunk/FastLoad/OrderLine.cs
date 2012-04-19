@@ -15,9 +15,7 @@ namespace FastLoad
 
         public OrderLine()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            this.CustomerPart = "";
         }
         public string CustomerPart
         {

@@ -38,9 +38,9 @@ namespace FastLoad
                 switch (reader.NodeType)
                 {
                     case XmlNodeType.Element: // The node is an element.
-                        Console.Write("<" + reader.Name);
+
                         currentElement = reader.Name;
-                        Console.WriteLine(">");
+
                         break;
                     case XmlNodeType.Text: //Display the text in each element.
                         switch (currentElement)
@@ -84,6 +84,9 @@ namespace FastLoad
                             case "OrderQty":
                                 order.OrderQty = System.Convert.ToDecimal(reader.Value);
                                 break;
+                            case "buyerPartNo":
+                                order.CustomerPart = reader.Value;
+                                break;
                             case "SellingFactor":
                                 order.SellingFactor = System.Convert.ToDecimal(reader.Value);
                                 break;
@@ -95,15 +98,19 @@ namespace FastLoad
                                 break;
                             case "UnitPrice":
                                 order.UnitPrice = System.Convert.ToDecimal(reader.Value);
-                                order.postLine();  // are we sure this is the best way 
                                 break;
                         }
                         break;
                         //Console.WriteLine(reader.Value);
                         
                     case XmlNodeType.EndElement: //Display the end of the element.
-                        Console.Write("</" + reader.Name);
-                        Console.WriteLine(">");
+                        currentElement = reader.Name;
+                        switch (currentElement)
+                        {
+                            case "OrderDt":
+                                order.postLine();
+                                break;
+                        }
                         break;
                 }
             }
