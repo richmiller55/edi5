@@ -74,6 +74,9 @@ namespace FastLoad
             hedRow.Date01 = ord.ShipNoLaterDate;
             hedRow.ShipToNum = ord.ShipToNum;
             hedRow.ShipViaCode = ord.ShipVia;
+            string outMessage = "PO= " + ord.PoNo.ToString();
+            outMessage += "  Order Date " + ord.OrderDate.ToString();
+            Console.WriteLine(outMessage);
             // hedRow.ShipViaCode = "UGND";
             bool result = true;
             
@@ -86,10 +89,7 @@ namespace FastLoad
             {
                 // header did not post
                 message = e.Message;
-                MessageBox.Show(message.ToString() + " ship to: " + ord.ShipToNum.ToString(),
-                    "Sales Order Header Did not Post.",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                Console.WriteLine(message.ToString() + " ship to: " + ord.ShipToNum.ToString());
                 result = false;
             }
             if (result) {
@@ -119,6 +119,13 @@ namespace FastLoad
                     dtlRow.RowMod = "A";
                     dtlRow.UnitPrice = line.UnitPrice;
                     dtlRow.DocUnitPrice = line.UnitPrice;
+                    string lineMessage = " line " + rowNumber.ToString();
+                    lineMessage += "  " + partDescr;
+                    lineMessage += "  " + line.OrderQty.ToString();
+                    lineMessage += "  " + line.UnitPrice.ToString();
+                    Decimal lineTotal = line.OrderQty * line.UnitPrice;
+                    lineMessage += "  " + lineTotal.ToString();
+                    Console.WriteLine(lineMessage);
 
                     message = "OK Line";
                     try
