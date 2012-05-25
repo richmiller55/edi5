@@ -63,6 +63,7 @@ namespace FastLoad
                 {
                     XmlReader reader = new XmlReader(fileName);
                     SalesOrder salesOrder = reader.GetSalesOrder();
+                    Console.WriteLine("Processing file " + fileName);
                      writer.ProcessOrder(salesOrder);
                 
                 }
