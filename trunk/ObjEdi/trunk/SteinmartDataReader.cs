@@ -436,6 +436,8 @@ namespace ObjEdi
             shipViaHash.Add("351", "DOAK");
             shipViaHash.Add("354", "DOAK");
             shipViaHash.Add("357", "DOAK");
+            shipViaHash.Add("359", "DOAK");
+            shipViaHash.Add("360", "DOAK");
             shipViaHash.Add("1", "AOAK");
             shipViaHash.Add("3", "AOAK");
             shipViaHash.Add("4", "AOAK");
@@ -649,6 +651,7 @@ namespace ObjEdi
             shipViaHash.Add("347", "COAK");
             shipViaHash.Add("350", "COAK");
             shipViaHash.Add("355", "COAK");
+            shipViaHash.Add("358", "COAK");
             shipViaHash.Add("701", "COAK");
         }
         string getShipVia(string store)
