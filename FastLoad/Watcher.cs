@@ -32,6 +32,7 @@ namespace FastLoad
                 // this.report.UpdatePage();
                 Application.Exit();
             }
+            Console.WriteLine("logged in OK");
             watcher = new FileSystemWatcher(dir, "*.*");
             watcher.Created += new FileSystemEventHandler(watcher_Created);
             watcher.Changed += new FileSystemEventHandler(watcher_Changed);
@@ -54,6 +55,7 @@ namespace FastLoad
         {
             if (e.ChangeType == WatcherChangeTypes.Created)
             {
+                Console.WriteLine("watcher going to create queue");
                 OrderQueue queue = new OrderQueue(this.session);
             }
         }
