@@ -112,6 +112,7 @@ namespace OrderEDI
                     dtlRow.SellingFactor = line.getSellFactor();
                     dtlRow.SellingFactorDirection = "M";
                     dtlRow.SellingQuantity = line.getQty();
+                    dtlRow.Number01 = line.getLineNo();
                     string custPart = "";
                     try
                     {
