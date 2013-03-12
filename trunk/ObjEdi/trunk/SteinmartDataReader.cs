@@ -75,7 +75,8 @@ namespace ObjEdi
     }
     class SteinmartDataReader
     {
-        string dir = "D:/users/EDI/SteinMart/InboxOrders/";
+        // string dir = "D:/users/EDI/SteinMart/InboxOrders/";
+        string dir = "I:/edi/steinMart/up/";
         
         StreamReader tr;
         Order ord;
@@ -368,6 +369,19 @@ namespace ObjEdi
             partXref.Add("48036248", "757026232242");
             partXref.Add("48036263", "757026232112");
             partXref.Add("48048896", "757026198388");
+            
+            partXref.Add("49732944", "757026233683");
+            partXref.Add("49733017", "757026239005");
+            partXref.Add("49735525", "757026238978");
+            partXref.Add("49735640", "757026239098");
+            partXref.Add("49735822", "757026237247");
+            partXref.Add("49735897", "757026237216");
+            partXref.Add("49736176", "757026237186");
+            partXref.Add("49736283", "757026239036");
+            partXref.Add("49736937", "757026238961");
+            partXref.Add("49736994", "757026237209");
+            partXref.Add("49737117", "757026237223");
+
         }
         void initShipVia()
         {
