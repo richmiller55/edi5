@@ -75,8 +75,8 @@ namespace ObjEdi
     }
     class SteinmartDataReader
     {
-        // string dir = "D:/users/EDI/SteinMart/InboxOrders/";
-        string dir = "I:/edi/steinMart/up/";
+        string dir = "D:/users/EDI/SteinMart/InboxOrders/";
+        // string dir = "I:/edi/steinMart/up/";
         
         StreamReader tr;
         Order ord;
