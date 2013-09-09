@@ -53,7 +53,6 @@ namespace FastLoad
             get { return sellingQty; }
             set { sellingQty = value; }
         }
-        
         public int LineNum
         {
             get { return lineNum;  }
