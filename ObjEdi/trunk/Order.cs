@@ -20,7 +20,6 @@ namespace ObjEdi
         private System.DateTime m_needByDate;
         public ArrayList lines;
         private OrderLine m_currentLine;
-
         public Order()
         {
             //
@@ -28,25 +27,6 @@ namespace ObjEdi
             this.m_validLines = 0;
             this.lines = new ArrayList();
             this.CurrentLine = new OrderLine();
-        }
-        public void postLineAfter860()
-        {
-            string canceledItem1 = "23473952";
-            string canceledItem2 = "23474174";
-            if (this.CurrentLine.CustomerPart == canceledItem1)
-            {
-                this.CurrentLine = new OrderLine();
-            }
-            else if (this.CurrentLine.CustomerPart == canceledItem2)
-            {
-                this.CurrentLine = new OrderLine();
-            }
-            else
-            {
-                lines.Add(this.CurrentLine);
-                this.CurrentLine = new OrderLine();
-                this.ValidLines += 1;
-            }
         }
         public void postLine()
         {
@@ -65,7 +45,6 @@ namespace ObjEdi
                 m_currentLine = value;
             }
         }
-
         public string PONumber
         {
             get
