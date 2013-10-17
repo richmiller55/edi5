@@ -15,7 +15,6 @@ namespace ObjEdi
         private decimal m_unitPrice;
         private int m_factor;
         private string  m_lineRef;
-
         public OrderLine()
         {
             this.m_factor = 1;
@@ -123,7 +122,5 @@ namespace ObjEdi
                 m_lineRef = value;
             }
         }
-        // Convert.ToDecimal(qty);
-
     }
 }

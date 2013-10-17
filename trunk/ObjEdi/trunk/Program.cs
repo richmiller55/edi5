@@ -16,7 +16,8 @@ namespace ObjEdi
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
             // PearlBlanketReader reader = new PearlBlanketReader();
-            SteinmartDataReader reader = new SteinmartDataReader();
+            // SteinmartDataReader reader = new SteinmartDataReader();
+            AcademyReader();
             // NviDataReader reader = new NviDataReader();
         }
     }
