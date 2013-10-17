@@ -19,8 +19,6 @@ namespace ObjEdi
         string custId = "269715";
         public AcademyReader()
         {
-            initLookupStyle();
-            initShipVia();
             DirectoryInfo dirInfo = new DirectoryInfo(dir);
             FileInfo[] fileListInfo = dirInfo.GetFiles();
             foreach (FileSystemInfo fsi in fileListInfo)
@@ -40,7 +38,7 @@ namespace ObjEdi
             {
                 string[] split = line.Split(new Char[] { '\t' });
                 string customerId = this.custId;
-                int TransactionControlNo  = split[(int)acad.TransControlNo];
+                int TransactionControlNo  = System.Convert.ToInt32( split[(int)acad.TransControlNo]);
                 
                 // we will worry about store in a second, 
                 // here this transaction thing will control the action
@@ -75,51 +73,25 @@ namespace ObjEdi
                 ord.OrderDateStr   = split[(int)acad.PODate];
                 ord.PONumber = split[(int)acad.PONumber];
                 string shipvia = split[(int)acad.ShippingInstr];  // check it out
-                /// ord.ShipVia = this.getShipVia(storeNo);
+               
                 ord.TermsCode = crTerms;
                 bool processLine = true;
-                string smPart = split[(int)dicFmt.SKUNumber];
-                ord.CustomerPart = smPart;
-                try
-                {
-                    ord.UPC = partXref[smPart].ToString();
-                }
-                catch
-                {
-                    MessageBox.Show("This Steinmart UPC does not match "  + smPart);
-                    processLine = false;
-                }
-                ord.Rev = 0;
-                ord.OrderQty = Convert.ToDecimal(split[(int)dicFmt.Qty]);
-                ord.UnitPrice = Convert.ToDecimal(split[(int)dicFmt.UnitPrice]);
+                string leadingZeroUPC = split[(int)acad.UPCCode];
+                ord.UPC = leadingZeroUPC.Substring(2);
+                ord.OrderQty = Convert.ToDecimal(split[(int)acad.QtyOrdered]);
+                ord.UnitPrice = Convert.ToDecimal(split[(int)acad.UnitPrice]);
                 if (processLine)
                 {
                     ord.postLine();
                 }
-                lastStoreNo = storeNo;
-                notFirstTime = true;
             }
             writer.ProcessOrder(ord);
             ord = new Order();
-            notFirstTime = true;
         }
         string getShipVia(string store)
         {
             string shipVia = "UGND";
-            try
-            {
-                shipVia = shipViaHash[store].ToString();
-            }
-            catch
-            {
-                shipVia = "UGND";
-            }
             return shipVia;
-        }
-        string getCaUpc(string smPart)
-        {
-            string upc = partXref[smPart].ToString();
-            return upc;
         }
     }
 }
