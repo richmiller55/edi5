@@ -16,6 +16,7 @@ namespace ObjEdi
         // Hashtable partXref;
         // Hashtable shipViaHash;
         string crTerms = "N30";
+        string shipVia = "FGRB";
         string custId = "269715";
         public AcademyReader()
         {
@@ -72,8 +73,8 @@ namespace ObjEdi
                 ord.NeedByDateStr  = split[(int)acad.CancelAfter];
                 ord.OrderDateStr   = split[(int)acad.PODate];
                 ord.PONumber = split[(int)acad.PONumber];
-                string shipvia = split[(int)acad.ShippingInstr];  // check it out
-               
+                string shipInstruc = split[(int)acad.ShippingInstr];
+                ord.ShipVia = shipVia;
                 ord.TermsCode = crTerms;
                 bool processLine = true;
                 string leadingZeroUPC = split[(int)acad.UPCCode];

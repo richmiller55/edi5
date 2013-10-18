@@ -13,6 +13,8 @@ namespace ObjEdi
         RequestShipDate,
         CancelAfter,
         ShippingInstr,
+        BuyerName,
+        ShipToNum,
         ShipToAddress,
         ShipToCity,
         ShipToState,
