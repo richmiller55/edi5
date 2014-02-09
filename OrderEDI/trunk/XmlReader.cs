@@ -94,6 +94,9 @@ namespace OrderEDI
                             case "SellFactor":
                                 order.setSellFactor(reader.Value);
                                 break;
+                            case "SellingFactor":
+                                order.setSellFactor(reader.Value);
+                                break;
                         }
                         break;
                         //Console.WriteLine(reader.Value);
