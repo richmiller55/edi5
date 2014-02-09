@@ -82,7 +82,7 @@ namespace OrderEDI
                 // header did not post
                 message = e.Message;
                 
-                MessageBox.Show(message.ToString() + " ship to: " + ord.ShipToId.ToString(),
+             MessageBox.Show(message.ToString() + " ship to: " + ord.ShipToId.ToString(),
                     "Sales Order Header Did not Post.",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
