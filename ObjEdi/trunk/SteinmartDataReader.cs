@@ -384,6 +384,12 @@ namespace ObjEdi
             partXref.Add("50277029", "757026232181");
             partXref.Add("50277052", "757026239173");
             partXref.Add("50277086", "757026239951");
+            partXref.Add("52498987", "757026273894");
+            partXref.Add("52499035", "757026266704");
+            partXref.Add("52499621", "757026265578");
+            partXref.Add("52499712", "757026263512");
+            partXref.Add("52499837", "757026273948");
+            partXref.Add("52499852", "757026273825");
         }
         void initShipVia()
         {
