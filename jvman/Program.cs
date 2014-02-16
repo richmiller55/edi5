@@ -1,16 +1,19 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+// using System.ServiceProcess;
 using System.Text;
 
-
-namespace Pack
+namespace JVMan
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        static void Main()
         {
-            CheckPack mgr = new CheckPack();
+          // main version
+          ProcessDirectory();
+
         }
     }
 }
