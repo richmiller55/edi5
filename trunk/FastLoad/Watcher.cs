@@ -33,12 +33,20 @@ namespace FastLoad
                 Application.Exit();
             }
             Console.WriteLine("logged in OK");
+            // clear any orders in the dir first then that queue goes away
+            ProcessExistingOrders();
+
             watcher = new FileSystemWatcher(dir, "*.*");
             watcher.Created += new FileSystemEventHandler(watcher_Created);
             watcher.Changed += new FileSystemEventHandler(watcher_Changed);
             // watcher.Created += OnError;
             watcher.EnableRaisingEvents = true;
             while (Console.Read() != 'q') ;
+        }
+        void ProcessExistingOrders()
+        {
+            // need this for later
+            // OrderQueue queue = new OrderQueue(this.session);
         }
         void watcher_Changed(object sender, FileSystemEventArgs e)
         {

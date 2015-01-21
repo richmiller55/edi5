@@ -63,6 +63,7 @@ namespace FastLoad
                             case "BTCustID":
                                 order.CustomerID = reader.Value;
                                 break;
+                        
                             case "RequestDate":
                                 order.RequestDate = convertStrToDate(reader.Value);
                                 break;
@@ -108,6 +109,9 @@ namespace FastLoad
                         switch (currentElement)
                         {
                             case "OrderDt":
+                                order.postLine();
+                                break;
+                            case "OrderDtl":
                                 order.postLine();
                                 break;
                         }
