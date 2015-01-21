@@ -13,8 +13,16 @@ namespace FastLoad
         {
             // main version
             Watcher wa = new Watcher();
-            // test invoice print version
-            // TestPrint tp = new TestPrint();
+            // target 1/19/2015
+            // process();
+        }
+        static void process()
+        {
+            MockUpReader rdr = new MockUpReader();
+            TestSalesOrder tester = new TestSalesOrder();
+            SalesOrder order = rdr.FillInOrder();
+            tester.ProcessOrder(order);
+
         }
     }
 }
