@@ -12,6 +12,13 @@ namespace FastLoad
         decimal sellingQty;
 
         string shipToNum;
+        string shortChar02 = "";
+        string shortChar03 = "";
+        string shortChar04 = "";
+        string shortChar05 = "";
+        string shortChar06 = "";
+        string shortChar07 = "";
+        string character01 = "";
 
         public OrderLine()
         {
@@ -68,5 +75,41 @@ namespace FastLoad
             get { return sellingFactorDirection; }
             set { sellingFactorDirection = value; }
         }
+        public string ShortChar02
+        {
+            get { return shortChar02; }
+            set { shortChar02 = value; }
+        }
+        public string ShortChar03
+        {
+            get { return shortChar03; }
+            set { shortChar03 = value; }
+        }
+        public string ShortChar04
+        {
+            get { return shortChar04; }
+            set { shortChar04 = value; }
+        }
+        public string ShortChar05 
+        {
+            get { return shortChar05; }
+            set { shortChar05 = value; }
+        }
+        public string ShortChar06
+        {
+            get { return shortChar06; }
+            set { shortChar06 = value; }
+        }
+        public string ShortChar07
+        {
+            get { return shortChar07; }
+            set { shortChar07 = value; }
+        }
+        public string Character01
+        {
+            get { return character01; }
+            set { character01 = value; }
+        }
+
     }
 }
