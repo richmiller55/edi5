@@ -71,6 +71,7 @@ namespace FastLoad
             hedRow.OrderDate = ord.OrderDate;
             hedRow.NeedByDate = ord.NeedByDate;
             hedRow.RequestDate = ord.RequestDate;
+            
             hedRow.Date01 = ord.ShipNoLaterDate;
             hedRow.ShipToNum = ord.ShipToNum;
             hedRow.ShipViaCode = ord.ShipVia;

@@ -72,7 +72,6 @@ namespace FastLoad
                     string message = e.Message;
                     AllOk = false;
                 }
-
                 if (AllOk)
                 {
                     MoveFile(fileName, AllOk);
